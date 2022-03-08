@@ -1,22 +1,35 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+left to right direction
+:Studerende:
+rectangle "UniSkema"  {
+Studerende --> (Ønsker at finde undervisningslokalet)
+}
+actor Studerende as Studerende2
+rectangle "UniSkema" as "UniSkema5" {
+Studerende2 --> (Ønsker at se skemaet for hele semesteret)
+}
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+:Lærer:
+rectangle "UniSkema" as "UniSkema2" {
+Lærer --> (Ønsker at se tidspunktet for undervisningen)
+}
 
-User -> (Start)
-User --> (Use)
+actor Lærer as Lærer2
+rectangle "UniSkema" as "UniSkema4"  {
+Lærer2 --> (Ønsker at ændre tidspunktet for en forelæsning)
+(Ønsker at ændre tidspunktet for en forelæsning) --> (Vælger nyt tidspunkt for forelæsning)
+(Vælger nyt tidspunkt for forelæsning) --> (Anmodning bliver genereret)
+(Anmodning bliver genereret) --> :SkemaSekretær:
+}
 
-Admin ---> (Use)
+actor SkemaSekretær as SkemaSekretær2
+rectangle "UniSkema" as "UniSkema3"  {
+SkemaSekretær2 --> (En lærer har henvendt sig omkring ændring af undervisning)
+(En lærer har henvendt sig omkring ændring af undervisning) --> (Redigere skemaet)
+}
 
-note right of Admin : This is an example.
-
-note right of (Use)
-A note can also
-be on several lines
-end note
-
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+actor Studerende as Studerende3
+rectangle "UniSkema" as "UniSkema6"  {
+Studerende3 --> (Vil se om et undervisningslokale er ledigt)
+}
 @enduml

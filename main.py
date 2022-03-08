@@ -1,25 +1,21 @@
 import sys
-from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QDialog, QApplication
-from PyQt6.uic import loadUi
+from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QLineEdit, QPushButton, QTextEdit, QVBoxLayout
+from PyQt6.QtCore import Qt
+from PyQt6 import uic
 
-class Login(QDialog):
+class MyApp(QMainWindow):
     def __init__(self):
-        super(Login,self).__init__()
-        loadUi("Login.ui",self)
-        self.LoginButton.click.connect(self.loginfunction)
+        super().__init__()
+        uic.loadUi('Login.ui', self)
+        self.setWindowTitle('UniSkema')
 
-    def loginfunction(self):
-        Unilogin=self.Unilogin.text()
-        Password=self.Password.text()
-        print("Godkendt login, Bruger: ", Unilogin, "og adgangskode: ", Password)
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
 
+    myApp = MyApp()
+    myApp.show()
 
-app=QApplication(sys.argv)
-mainwindow=Login()
-widget=QtWidgets.QStackedWidget()
-widget.addWidget(mainwindow)
-widget.setFixedWidth(420)
-widget.setFixedHeight(520)
-widget.show()
-app.exec_()
+    try:
+        sys.exit(app.exec())
+    except SystemExit:
+        print('Closing Window...')
