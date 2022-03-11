@@ -100,17 +100,33 @@
    <widget class="QPushButton" name="LoginButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>350</y>
-      <width>121</width>
+      <x>70</x>
+      <y>340</y>
+      <width>281</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(23, 23, 23); font-size:18pt;</string>
+     <string notr="true">background-color: rgb(23, 23, 23); font-size:18pt; border-radius:10px;</string>
     </property>
     <property name="text">
      <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GlemtLoginButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>410</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(23, 23, 23); font-size:12pt; border-radius:10px;</string>
+    </property>
+    <property name="text">
+     <string>Glemt login</string>
     </property>
    </widget>
   </widget>
@@ -125,6 +141,11 @@
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionsad">
+   <property name="text">
+    <string> </string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
