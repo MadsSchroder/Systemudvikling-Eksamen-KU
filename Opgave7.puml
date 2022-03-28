@@ -4,7 +4,7 @@ left to right direction
 rectangle "UniSkema"  {
 Studerende --> (Ønsker at finde undervisningslokalet)
 }
-actor Studerende as Studerende2
+actor Studerende as Studerende2 
 rectangle "UniSkema" as "UniSkema5" {
 Studerende2 --> (Ønsker at se skemaet for hele semesteret)
 }
@@ -19,8 +19,8 @@ rectangle "UniSkema" as "UniSkema4"  {
 Lærer2 --> (Ønsker at ændre tidspunktet for en forelæsning)
 (Ønsker at ændre tidspunktet for en forelæsning) --> (Vælger nyt tidspunkt for forelæsning)
 (Vælger nyt tidspunkt for forelæsning) --> (Anmodning bliver genereret)
-(Anmodning bliver genereret) --> :SkemaSekretær:
 }
+(Anmodning bliver genereret) --> :SkemaSekretær:
 
 actor SkemaSekretær as SkemaSekretær2
 rectangle "UniSkema" as "UniSkema3"  {

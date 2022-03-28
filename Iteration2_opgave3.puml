@@ -1,0 +1,21 @@
+@startuml
+Actor Lærer
+Lærer -> Uniskema: Login
+Activate Uniskema
+Uniskema -> Database: Tjek bruger
+Activate Database
+alt successful login
+    Uniskema <- Database: Bruger godkendt
+    Lærer <- Uniskema: Menu
+else failed login
+    Uniskema <- Database: Bruger ikke godkendt
+    Lærer <- Uniskema: Logout
+end
+Lærer -> Uniskema: Søger efter sit skema
+Uniskema -> Database: Finder Lærerens skema
+Lærer <- Database: Viser skemaet til Læreren
+Lærer -> Uniskema: Ændre skemaet
+Uniskema -> Database: Gemmer læreres ønske om skemaændring
+return Anmodning afsendt til SkemaSekretær
+return Logout
+@enduml

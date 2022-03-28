@@ -1,0 +1,33 @@
+@startuml
+Actor SkemaSekretær
+SkemaSekretær -> Uniskema: Login
+Activate Uniskema
+Uniskema -> Database: Tjek bruger
+Activate Database
+alt successful login
+    Uniskema <- Database: Bruger godkendt
+    SkemaSekretær <- Uniskema: Menu
+else failed login
+    Uniskema <- Database: Bruger ikke godkendt
+    SkemaSekretær <- Uniskema: Logout
+end
+SkemaSekretær -> Uniskema: Besvar anmodning om skemaændring
+Uniskema -> Database: Finder Lærerens anmodning
+Uniskema <- Database: Henter Lærerens anmodning
+SkemaSekretær <- Uniskema: Viser Lærerens anmodning
+SkemaSekretær -> Uniskema: Søger efter de involveredes skemaer
+Uniskema -> Database: Finder de involveredes skemaer
+Uniskema <- Database: Henter de involveredes skemaer
+SkemaSekretær <- Uniskema: Viser de involveredes skemaer
+alt Godkendelse
+    SkemaSekretær -> Uniskema: Lærerens anmodning godkendes
+    Uniskema -> Database: De involveredes skemaer ændres
+    Uniskema <- Database: Sender besked til læreren
+    SkemaSekretær <- Uniskema: Anmodning besvaret
+else Afvisning
+    SkemaSekretær -> Uniskema: Lærerens anmodning afvises
+    Uniskema -> Database: De involveredes skemaer er uændret
+    return Sender besked til læreren
+    return Anmodning besvaret
+end
+@enduml
