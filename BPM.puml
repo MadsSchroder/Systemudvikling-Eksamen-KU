@@ -1,0 +1,18 @@
+@startuml
+|Lærer|
+start
+:Login;
+:Se skema;
+:Anmoder om redigering af skema;
+|Skemasekretær|
+:Modtager anmodning;
+if (Tjek involveredes skemaer) then
+:Afslå anmodning;
+else
+:Godkend anmodning;
+:Ændre involveredes skemaer;
+endif
+|Lærer|
+:Svar på anmodning;
+stop
+@enduml
