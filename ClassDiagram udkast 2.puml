@@ -12,7 +12,13 @@ Forelæsning -- Lokaler
 Lærer -- Kurser
 SkemaSekretær -- Forelæsning
 
-
+abstract class Bruger{
+    Navn: str
+    Telefonnummer: varcher
+    Adresse: str
+    E-mail: invarcher255
+    CPR-nummer: varcher
+    }
 class Studerende{
     Student ID: int
     Studieretning: Studieretning
@@ -55,7 +61,7 @@ class Forelæsning{
     Tidspunkt: datetime
     Kursus: str
     Hold: str
-    Lokale:
+    Lokale: str
     --
     AngivKursus():
     AngivHold():
@@ -73,16 +79,5 @@ class Studieretning{
     Fakultet: str
     Uddannelsesniveau: str
     }
-abstract class Bruger{
-    Navn: str
-    Telefonnummer: varcher
-    Adresse: str
-    E-mail: invarcher255
-    CPR-nummer: varcher
-    }
-
-
-
-
 
 @enduml
