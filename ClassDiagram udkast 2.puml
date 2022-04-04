@@ -18,6 +18,11 @@ abstract class Bruger{
     Adresse: str
     E-mail: invarcher255
     CPR-nummer: varcher
+    --
+    HentNavn():
+    HentTelefonnummer():
+    HentAdresse():
+    HentE-mail():
     }
 class Studerende{
     Student ID: int
@@ -56,6 +61,9 @@ class Kurser{
     ECTS: float
     Student liste: list
     Kursusansvarlig: str
+    --
+    SeSkema():
+
     }
 class Forelæsning{
     Tidspunkt: datetime
