@@ -1,5 +1,6 @@
 @startuml
 Actor Lærer
+Activate Lærer
 Lærer -> Uniskema: Login
 Activate Uniskema
 Uniskema -> Database: Tjek bruger
@@ -16,6 +17,9 @@ Uniskema -> Database: Finder Lærerens skema
 Lærer <- Database: Viser skemaet til Læreren
 Lærer -> Uniskema: Ændre skemaet
 Uniskema -> Database: Gemmer læreres ønske om skemaændring
-return Anmodning afsendt til SkemaSekretær
+Database -> SkemaSekretær: Anmodning afsendt til SkemaSekretær
+Actor SkemaSekretær
+Activate SkemaSekretær
+
 return Logout
 @enduml
