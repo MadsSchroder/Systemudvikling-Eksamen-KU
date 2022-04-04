@@ -1,0 +1,36 @@
+@startuml
+
+Studerende -- Bruger
+SkemaSekretær -- Bruger
+Lærer -- Bruger
+Studerende -- Studieretning
+Studieretning -- Kurser
+Kurser -- Forelæsning
+Forelæsning -- Lokaler
+Lærer -- Kurser
+SkemaSekretær -- Forelæsning
+
+
+
+class Studerende{
+    }
+class SkemaSekretær{
+    }
+class Lærer{
+    }
+class Lokaler{
+    }
+class Kurser{
+    }
+class Forelæsning{
+    }
+class Studieretning{
+    }
+abstract class Bruger{
+    }
+
+
+
+
+
+@enduml
