@@ -1,9 +1,9 @@
 @startuml
 
-Studerende -- Bruger
-SkemaSekretær -- Bruger
-Lærer -- Bruger
-Universitet -- Bruger
+Bruger -- Studerende
+Bruger -- SkemaSekretær
+Bruger -- Lærer
+Bruger -- Universitet
 Studerende -- Studieretning
 Studieretning -- Semester
 Semester -- Kurser
