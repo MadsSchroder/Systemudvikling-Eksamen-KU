@@ -3,8 +3,10 @@
 Studerende -- Bruger
 SkemaSekretær -- Bruger
 Lærer -- Bruger
+Universitet -- Bruger
 Studerende -- Studieretning
-Studieretning -- Kurser
+Studieretning -- Semester
+Semester -- Kurser
 Kurser -- Forelæsning
 Forelæsning -- Lokaler
 Lærer -- Kurser
@@ -12,20 +14,71 @@ SkemaSekretær -- Forelæsning
 
 
 class Studerende{
+    Student ID: int
+    Studieretning: Studieretning
+    Hold: str
+    --
+    SeSkema():
     }
 class SkemaSekretær{
+    Medarbejder ID: int
+    Fakultet: str
+    --
+    RedigereSkema():
+    BesvareAnmodning():
+    SeSkema():
+    }
+class Universitet{
+    Universitets ID: int
+    Fakultet: str
     }
 class Lærer{
+    Medarbejder ID: int
+    Kursusliste: list
+    --
+    ForeslåSkemaændring():
+    SeSkema():
     }
 class Lokaler{
+    Lokation ID: int
+    Adresse: str
+    Kapacitet: int
+    Lokationstype: str
     }
 class Kurser{
+    Kursus ID: int
+    ECTS: float
+    Student liste: list
+    Kursusansvarlig: str
     }
 class Forelæsning{
+    Tidspunkt: datetime
+    Kursus: str
+    Hold: str
+    Lokale:
+    --
+    AngivKursus():
+    AngivHold():
+    AngivLokale():
+    }
+class Semester{
+    Årgang: int
+    Semesterniveau: int
+    --
+    Semester: list(Kurser)
     }
 class Studieretning{
+    Studieretning ID: int
+    Navn: str
+    Fakultet: str
+    Uddannelsesniveau: str
     }
 abstract class Bruger{
+    Navn: str
+    Telefonnummer: varcher
+    Adresse: str
+    E-mail: invarcher255
+    CPR-nummer: varcher
     }
 
 
