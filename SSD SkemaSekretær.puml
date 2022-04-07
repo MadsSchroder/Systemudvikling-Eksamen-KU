@@ -4,6 +4,7 @@ SkemaSekretær -> Uniskema: Login
 Activate Uniskema
 Uniskema -> Database: Tjek bruger
 Activate Database
+Actor Lærer
 alt successful login
     Uniskema <- Database: Bruger godkendt
     SkemaSekretær <- Uniskema: Menu
@@ -11,6 +12,8 @@ else failed login
     Uniskema <- Database: Bruger ikke godkendt
     SkemaSekretær <- Uniskema: Logout
 end
+SkemaSekretær -> Uniskema: Vælger at se notifikationer
+SkemaSekretær <- Uniskema: Viser notifikationerne
 SkemaSekretær -> Uniskema: Besvar anmodning om skemaændring
 Uniskema -> Database: Finder Lærerens anmodning
 Uniskema <- Database: Henter Lærerens anmodning
@@ -21,13 +24,17 @@ Uniskema <- Database: Henter de involveredes skemaer
 SkemaSekretær <- Uniskema: Viser de involveredes skemaer
 alt Godkendelse
     SkemaSekretær -> Uniskema: Lærerens anmodning godkendes
-    Uniskema -> Database: De involveredes skemaer ændres
-    Uniskema <- Database: Sender besked til læreren
-    SkemaSekretær <- Uniskema: Anmodning besvaret
+    Uniskema -> Database: Ændre de involveredes skema
+    Uniskema <- Database: Skema opdateret
+    SkemaSekretær <- Uniskema: Viser det nye skema
+    SkemaSekretær -> Uniskema: Besvarer at lærerens anmodning godkendes
+    Uniskema -> Database: Besked lagres i databasen
+    Database -> Lærer: Sender besked til Læreren
 else Afvisning
-    SkemaSekretær -> Uniskema: Lærerens anmodning afvises
-    Uniskema -> Database: De involveredes skemaer er uændret
-    return Sender besked til læreren
-    return Anmodning besvaret
+    SkemaSekretær -> Uniskema: Besvarer at lærerens anmodning afvises
+    Uniskema -> Database: Besked lagres i databasen
+    Database -> Lærer: Sender besked til Læreren
 end
+return End connection
+return logout
 @enduml
