@@ -1,16 +1,18 @@
 @startuml
 
-Bruger -- Studerende
-Bruger -- SkemaSekretær
-Bruger -- Lærer
-Bruger -- Universitet
-Studerende -- Studieretning
-Studieretning -- Semester
-Semester -- Kurser
-Kurser -- Forelæsning
-Forelæsning -- Lokaler
-Lærer -- Kurser
-SkemaSekretær -- Forelæsning
+Bruger"1" --* "1..*" Universitet
+Bruger <|-- Studerende
+Bruger <|-- Lærer
+Bruger <|-- SkemaSekretær
+Studerende"1" --o "1" Studieretning
+Studieretning"1" --* "4..*" Semester
+Semester"1" --* "2..4" Kurser
+Lærer"1" --o "1..*" Kurser
+Kurser"1" --o "1..*" Skema
+SkemaSekretær"1" --o "1..*" Skema
+Lærer"1" --o "1" Skema
+Skema"1" --* "1..*" Forelæsning
+Forelæsning"1" --o "1" Lokaler
 
 abstract class Bruger{
     Navn: str
@@ -61,9 +63,13 @@ class Kurser{
     ECTS: float
     Student liste: list
     Kursusansvarlig: str
+    }
+class Skema{
+    Skema liste : list
+    ugenr : liste
+    datetime
     --
-    SeSkema():
-
+    VisSkema():
     }
 class Forelæsning{
     Tidspunkt: datetime
