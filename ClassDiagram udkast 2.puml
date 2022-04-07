@@ -1,26 +1,28 @@
 @startuml
 
-Bruger"1" --* "1..*" Universitet
-Bruger <|-- Studerende
-Bruger <|-- Lærer
-Bruger <|-- SkemaSekretær
-Studerende"1" --o "1" Studieretning
-Studieretning"1" --* "4..*" Semester
-Semester"1" --* "2..4" Kurser
-Lærer"1" --o "1..*" Kurser
-Kurser"1" --o "1..*" Skema
-SkemaSekretær"1" --o "1..*" Skema
-Lærer"1" --o "1" Skema
-Skema"1" --* "1..*" Forelæsning
-Forelæsning"1" --o "1" Lokaler
-
+Bruger -- Studerende
+Bruger -- SkemaSekretær
+Bruger -- Lærer
+Bruger -- Universitet
+Studerende -- Studieretning
+Studieretning -- Semester
+Semester -- Kurser
+Kurser -- Forelæsning
+Forelæsning -- Lokaler
+Lærer -- Kurser
+SkemaSekretær -- Forelæsning
 
 abstract class Bruger{
     Navn: str
-    Telefonnummer: varchar
+    Telefonnummer: varcher
     Adresse: str
-    E-mail: invarchar255
-    CPR-nummer: varchar
+    E-mail: invarcher255
+    CPR-nummer: varcher
+    --
+    HentNavn():
+    HentTelefonnummer():
+    HentAdresse():
+    HentE-mail():
     }
 class Studerende{
     Student ID: int
@@ -59,13 +61,9 @@ class Kurser{
     ECTS: float
     Student liste: list
     Kursusansvarlig: str
-    }
-class Skema{
-    Skema liste : list
-    ugenr : liste
-    datetime
     --
-    VisSkema():
+    SeSkema():
+
     }
 class Forelæsning{
     Tidspunkt: datetime
