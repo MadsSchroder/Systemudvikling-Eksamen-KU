@@ -2,17 +2,33 @@
 |Lærer|
 start
 :Login;
-:Se skema;
-:Anmoder om redigering af skema;
-|Skemasekretær|
-:Modtager anmodning;
-if (Tjek involveredes skemaer) then
-:Afslå anmodning;
-else
-:Godkend anmodning;
-:Ændre involveredes skemaer;
-endif
-|Lærer|
-:Svar på anmodning;
+:Ser sit skema;
+split
+:Skemaet er fint;
 stop
+split again
+:Ønsker at lave virtuel undervisning;
+:Skriver mail til de studerende om virtuel undervisning;
+stop
+split again
+:Ønsker at ændre skemaet;
+:Anmoder om redigering af skemaet;
+|Skemasekretær|
+:Modtager lærerens anmodning;
+:Tjekker de involveredes skemaer;
+:Besvarer anmodningen;
+split
+:Afslår anmodning;
+|Lærer|
+:Modtager besked om afslået skemaændring;
+stop
+|Skemasekretær|
+split again
+:Ændre lærerens skema;
+:Godkender anmodning;
+|Lærer|
+:Modtager besked om godkendt skemaændring;
+:Tjekker det nye skema;
+stop
+
 @enduml
