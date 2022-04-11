@@ -1,7 +1,4 @@
 @startuml
-'https://plantuml.com/component-diagram
-
-
 package "Lag1 - Brugere" {
   [Studerende]
   [Lærere]
@@ -30,7 +27,6 @@ package "Lag5 - Common data" {
 package "Lag6 - Support production" {
     [Skema]
     [Universiteter]
-
 }
 
 [Studerende] ..> [UniSkema]
@@ -44,7 +40,5 @@ package "Lag6 - Support production" {
 
 [DTU database] ..> [Universiteter]
 [SUND database] ..> [Universiteter]
-
-
 
 @enduml
