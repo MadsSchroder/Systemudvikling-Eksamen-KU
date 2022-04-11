@@ -25,7 +25,7 @@ package "Lag5 - Common data" {
 }
 
 package "Lag6 - Support production" {
-    [Skema]
+    [Fakutelter]
     [Universiteter]
 }
 
