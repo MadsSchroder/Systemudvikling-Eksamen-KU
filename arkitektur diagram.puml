@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+package "Lag1 - Brugere" {
+  [Studerende]
+  [Lærere]
+  [Skemasekretær]
+}
+
+package "Lag2 - Præsentation" {
+  [UniSkema]
+}
+
+package "Lag3 - Logik" {
+  [UniSkema service]
+}
+
+package "Lag4 - Sikkerhed" {
+    [UniSkema sikkerhed]
+}
+
+package "Lag5 - Common data" {
+    [SQL database]
+    [DTU database]
+    [KU database]
+    [SUND database]
+}
+
+package "Lag6 - Support production" {
+    [Skema]
+    [Universiteter]
+
+}
+
+[Studerende] ..> [UniSkema]
+[Skemasekretær] ..> [UniSkema]
+[Lærere] ..> [UniSkema]
+[UniSkema] ..> [UniSkema service]
+[UniSkema service] ..> [SQL database]
+[UniSkema service] ..> [DTU database]
+[UniSkema service] ..> [KU database]
+[UniSkema service] ..> [SUND database]
+
+[DTU database] ..> [Universiteter]
+[SUND database] ..> [Universiteter]
+
+
+
+@enduml
