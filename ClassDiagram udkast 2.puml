@@ -14,7 +14,7 @@ Lærer"1" --o "1" Skema
 Skema"1" --* "1..*" Forelæsning
 Forelæsning"1" --o "1" Lokaler
 
-abstract class Bruger{
+class Bruger{
     Navn: str
     Telefonnummer: varcher
     Adresse: str
