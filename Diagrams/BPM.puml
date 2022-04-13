@@ -16,16 +16,16 @@ split again
 |Skemasekretær|
 :Modtager lærerens anmodning;
 :Tjekker de involveredes skemaer;
-:Besvarer anmodningen;
-split
+if (Kan ændring lade sig gøre) then (false)
 :Afslår anmodning;
 |Lærer|
 :Modtager besked om afslået skemaændring;
 stop
 |Skemasekretær|
-split again
+else (true)
 :Ændre lærerens skema;
 :Godkender anmodning;
+
 |Lærer|
 :Modtager besked om godkendt skemaændring;
 :Tjekker det nye skema;
