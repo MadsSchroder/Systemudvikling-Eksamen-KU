@@ -19,13 +19,12 @@ package "Lag4 - Sikkerhed" {
 
 package "Lag5 - Common data" {
     [SQL database]
-    [DTU database]
+    [UniSkema database]
     [KU database]
-    [SUND database]
+    [DTU database]
 }
 
 package "Lag6 - Support production" {
-    [Fakutelter]
     [Universiteter]
 }
 
@@ -34,11 +33,12 @@ package "Lag6 - Support production" {
 [Lærere] ..> [UniSkema]
 [UniSkema] ..> [UniSkema service]
 [UniSkema service] ..> [SQL database]
-[UniSkema service] ..> [DTU database]
+[UniSkema service] ..> [UniSkema database]
 [UniSkema service] ..> [KU database]
-[UniSkema service] ..> [SUND database]
+[UniSkema service] ..> [DTU database]
 
+[UniSkema database] ..> [Universiteter]
+[KU database] ..> [Universiteter]
 [DTU database] ..> [Universiteter]
-[SUND database] ..> [Universiteter]
 
 @enduml
