@@ -5,10 +5,10 @@ Lærer -> Uniskema: Leder efter lokale
 Activate Uniskema
 Uniskema -> Uniskema_Service: Fremsøger data
 Activate Uniskema_Service
-Uniskema_Service -> Database: Fremsøger data
-Activate Database
-Database -> Universiteter: Løbende søgning af lokale
-Activate Universiteter
+Uniskema_Service -> SQL_Database: Fremsøger data
+Activate SQL_Database
+SQL_Database -> "KU/DTU_Database": Løbende søgning af lokale
+Activate "KU/DTU_Database"
 Return Løbende sending af lokale
 Return Sender data
 Uniskema <- Uniskema_Service: Viser lokale
