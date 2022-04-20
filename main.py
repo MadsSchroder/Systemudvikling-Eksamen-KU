@@ -1,21 +1,33 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QLineEdit, QPushButton, QTextEdit, QVBoxLayout
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QPushButton
 from PyQt6 import uic
 
-class MyApp(QMainWindow):
+class LoginUI(QMainWindow):
     def __init__(self):
-        super().__init__()
-        uic.loadUi('Login.ui', self)
-        self.setWindowTitle('UniSkema')
+        super(LoginUI, self).__init__()
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
+        #Loader den specifikke UI fil
+        uic.loadUi("UI/Login.ui",self)
 
-    myApp = MyApp()
-    myApp.show()
+        #Definerer UI filens widgets
+        self.Unilogin = self.findChild(QLineEdit, "Unilogin")
+        self.Password = self.findChild(QLineEdit, "Password")
+        self.LoginButton = self.findChild(QPushButton, "LoginButton")
+        self.GlemtLoginButton = self.findChild(QPushButton, "GlemtLoginButton")
 
-    try:
-        sys.exit(app.exec())
-    except SystemExit:
-        print('Closing Window...')
+        #Hvad widgets skal gøre
+        self.LoginButton.clicked.connect(self.loginfunction)
+
+        #Viser appen
+        self.show()
+
+    def loginfunction(self):
+        unilogin=self.Unilogin.text()
+        password=self.Password.text()
+        print("Du er logget ind med email:", unilogin, "og password:", password)
+
+
+#Initialiserer appen
+app = QApplication(sys.argv)
+UIWindow = LoginUI()
+app.exec()
