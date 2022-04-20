@@ -7,16 +7,16 @@ Uniskema -> Database: Tjek bruger
 Activate Database
 Actor SkemaSekretær
 alt successful login
-    Uniskema <- Database: Bruger godkendt
-    Lærer <- Uniskema: Menu
+    Uniskema <-- Database: Bruger godkendt
+    Lærer <-- Uniskema: Menu
 else failed login
-    Uniskema <- Database: Bruger ikke godkendt
-    Lærer <- Uniskema: Logout
+    Uniskema <-- Database: Bruger ikke godkendt
+    Lærer <-- Uniskema: Logout
 end
 Lærer -> Uniskema: Søger efter sit skema
 Uniskema -> Database: Finder Lærerens skema
-Uniskema <- Database: Henter skemaet til Læreren
-Lærer <- Uniskema: Viser skemaet til Læreren
+Uniskema <-- Database: Henter skemaet til Læreren
+Lærer <-- Uniskema: Viser skemaet til Læreren
 Lærer -> Uniskema: Anmod om ændring af skemaet
 Uniskema -> Database: Anmodning lagres i databasen
 Database -> SkemaSekretær: Sender besked til SkemaSekretær
