@@ -14,7 +14,7 @@ package "Lag3 - Logik" {
 }
 
 package "Lag4 - Sikkerhed" {
-    [UniSkema sikkerhed]
+    [UniSkema sikkerhed \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n]
 }
 
 package "Lag5 - Common data" {

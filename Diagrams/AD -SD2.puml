@@ -6,10 +6,10 @@ Uniskema -> Uniskema_Service: Tjek bruger
 Activate Uniskema_Service
 alt successfuld login
     Uniskema <-- Uniskema_Service: Bruger godkendt
-    Studerende <- Uniskema: Menu
+    Studerende <-- Uniskema: Menu
 else Bruger ikke fundet
     Return Bruger ikke godkendt
-    Studerende <- Uniskema: Log ud
+    Return Log ud
 end
 
 @enduml
