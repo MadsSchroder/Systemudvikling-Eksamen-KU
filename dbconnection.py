@@ -14,12 +14,41 @@ def close_connection(connection):
     if connection:
         connection.close()
 
-connection = get_connection()
-mycursor = connection.cursor()
-mycursor.execute("SELECT * FROM users")
-sqladmin = mycursor.fetchall()
-print(sqladmin)
-close_connection(connection)
+def check_username(username):
+    connection = get_connection()
+    mycursor = connection.cursor()
+    query = ("SELECT * FROM users where username = %s")
+    mycursor.execute(query, (username,))
+    myresult=mycursor.fetchall()
+    if myresult:
+        return True
+    else:
+        return False
+
+
+def check_password(username, pw):
+    connection = get_connection()
+    mycursor = connection.cursor()
+    if not check_username(username):
+        return (False, "No user found", 0)
+    query = ("SELECT password, usertypeid FROM users where username = %s")
+    mycursor.execute(query, (username,))
+    this_password = ""
+    this_usertypeid = 0
+    for (password) in mycursor:
+        this_password = password[0]
+        this_usertypeid = password[1]
+    #print(this_password)
+    mycursor.close()
+    connection.close()
+    if pw == this_password:
+        return (True, "Success", this_usertypeid)
+    else:
+        return (False, "Wrong password", 0)
+
+
+#test=check_password("Admin", "test")
+#print(test)
 
 
 # def get_users(users):

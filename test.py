@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QPushButton
+from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QPushButton, QDialog
 from PyQt6 import uic
 
 class LoginUI(QMainWindow):
@@ -9,14 +9,6 @@ class LoginUI(QMainWindow):
         #Loader den specifikke UI fil
         uic.loadUi("UI/Main.ui",self)
 
-        #Definerer UI filens widgets
-        self.Unilogin = self.findChild(QLineEdit, "Unilogin")
-        self.Password = self.findChild(QLineEdit, "Password")
-        self.LoginButton = self.findChild(QPushButton, "LoginButton")
-        self.GlemtLoginButton = self.findChild(QPushButton, "GlemtLoginButton")
-
-        #Hvad widgets skal gøre
-        self.LoginButton.clicked.connect(self.loginfunction)
 
         #Viser appen
         self.show()

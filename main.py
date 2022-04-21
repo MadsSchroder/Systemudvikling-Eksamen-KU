@@ -1,6 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QPushButton
 from PyQt6 import uic
+import dbconnection
 
 class LoginUI(QMainWindow):
     def __init__(self):
@@ -24,7 +25,9 @@ class LoginUI(QMainWindow):
     def loginfunction(self):
         unilogin=self.Unilogin.text()
         password=self.Password.text()
-        print("Du er logget ind med email:", unilogin, "og password:", password)
+        verification=dbconnection.check_password(unilogin, password)
+        print(verification)
+
 
 
 #Initialiserer appen
