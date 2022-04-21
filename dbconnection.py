@@ -30,38 +30,39 @@ def check_password(username, pw):
     connection = get_connection()
     mycursor = connection.cursor()
     if not check_username(username):
-        return (False, "No user found", 0)
-    query = ("SELECT password, usertypeid FROM users where username = %s")
+        return (False, "No user found", 0, 0)
+    query = ("SELECT password, usertypeid, id FROM users where username = %s")
     mycursor.execute(query, (username,))
     this_password = ""
     this_usertypeid = 0
+    this_userid = 0
     for (password) in mycursor:
         this_password = password[0]
         this_usertypeid = password[1]
-    #print(this_password)
+        this_userid = password[2]
     mycursor.close()
     connection.close()
     if pw == this_password:
-        return (True, "Success", this_usertypeid)
+        return (True, "Success", this_usertypeid, this_userid)
     else:
-        return (False, "Wrong password", 0)
+        return (False, "Wrong password", 0, 0)
 
+def get_classes(userid):
+    connection = get_connection()
+    mycursor = connection.cursor()
+    query = ("SELECT courseID FROM attendscourse where userid = %s")
+    mycursor.execute(query, (userid,))
+    this_courseid = 0
+    for (course) in mycursor:
+        this_courseid = course[0]
+    query2 = ("SELECT * FROM classes where courseid = %s")
+    class_list=[]
+    mycursor.execute(query2, (this_courseid,))
+    for (classes) in mycursor:
+        class_list.append(classes)
+    mycursor.close()
+    connection.close()
+    return class_list
 
-#test=check_password("Admin", "test")
-#print(test)
-
-
-# def get_users(users):
-#     try:
-#         connection = get_connection()
-#         cursor = connection.cursor()
-#         connection = get_connection()
-#         mycursor = connection.cursor()
-#         mycursor.execute("SELECT * FROM users")
-#         sqladmin = mycursor.fetchall()
-#         print(sqladmin)
-#         close_connection(connection)
-#     except (Exception, mysql.connector.Error) as error:
-#         print("Error while getting data", error)
-#
-# get_users(1)
+test=get_classes(1)
+print(test)
