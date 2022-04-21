@@ -1,38 +1,48 @@
 @startuml
-package "Lag1 - Brugere" {
-  [Studerende]
-  [Lærere]
-  [Skemasekretær]
+left to right direction
+together {
+top to bottom direction
+package "Lag1 - Brugere" as l1 {
+[Studerende]
+[Lærere]
+[Skemasekretær]
+}
+package "Lag2 - Præsentation" as l2 {
+[UniSkema]
+}
+package "Lag3 - Logik" as l3 {
+[UniSkema service]
+}
+package "Lag5 - Common data" as l5 {
+[SQL database]
 }
 
-package "Lag2 - Præsentation" {
-  [UniSkema]
+package "Lag6 - Ekstern data" as l6 {
+[KU database]
+[DTU database]
 }
 
-package "Lag3 - Logik" {
-  [UniSkema service]
+}
+package "Lag4 - Sikkerhed" as l4 {
+[UniSkema sikkerhed] as a
 }
 
-package "Lag4 - Sikkerhed" {
-    [UniSkema sikkerhed \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n]
-}
+l1 -> l4
+l2 -> l4
+l3 -> l4
+l5 -> l4
+l6 -> l4
 
-package "Lag5 - Common data" {
-    [SQL database]
-}
-
-package "Lag6 - Ekstern data" {
-    [KU database]
-    [DTU database]
-}
 
 [Studerende] ..> [UniSkema]
 [Skemasekretær] ..> [UniSkema]
+
 [Lærere] ..> [UniSkema]
 [UniSkema] ..> [UniSkema service]
 [UniSkema service] ..> [SQL database]
 [SQL database] ..> [KU database]
 [SQL database] ..> [DTU database]
 
-
+[Studerende] ..[hidden]> a
+[UniSkema service] ..[hidden]> a
 @enduml
