@@ -14,21 +14,25 @@ def close_connection(connection):
     if connection:
         connection.close()
 
-def get_users(users):
-    try:
-        connection = get_connection()
-        cursor = connection.cursor()
-        select_query = """select * from defaultdb.users where id =%s"""
-        cursor.execute(select_query, (users,))
-        records = cursor.fetchall()
-        print("Udskriver brugeren med")
-        for row in records:
-            print("id:", row[0], )
-            print("navn:", row[1])
-            print("kode:", row[2])
-            print("lavet:", row[3])
-        close_connection(connection)
-    except (Exception, mysql.connector.Error) as error:
-        print("Error while getting data", error)
+connection = get_connection()
+mycursor = connection.cursor()
+mycursor.execute("SELECT * FROM users")
+sqladmin = mycursor.fetchall()
+print(sqladmin)
+close_connection(connection)
 
-get_users(1)
+
+# def get_users(users):
+#     try:
+#         connection = get_connection()
+#         cursor = connection.cursor()
+#         connection = get_connection()
+#         mycursor = connection.cursor()
+#         mycursor.execute("SELECT * FROM users")
+#         sqladmin = mycursor.fetchall()
+#         print(sqladmin)
+#         close_connection(connection)
+#     except (Exception, mysql.connector.Error) as error:
+#         print("Error while getting data", error)
+#
+# get_users(1)

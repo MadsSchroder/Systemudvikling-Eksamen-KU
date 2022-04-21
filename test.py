@@ -7,7 +7,7 @@ class LoginUI(QMainWindow):
         super(LoginUI, self).__init__()
 
         #Loader den specifikke UI fil
-        uic.loadUi("UI/Login.ui",self)
+        uic.loadUi("UI/Main.ui",self)
 
         #Definerer UI filens widgets
         self.Unilogin = self.findChild(QLineEdit, "Unilogin")
