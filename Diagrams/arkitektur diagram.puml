@@ -1,6 +1,4 @@
 @startuml
-left to right direction
-together {
 top to bottom direction
 package "Lag1 - Brugere" as l1 {
 [Studerende]
@@ -13,36 +11,28 @@ package "Lag2 - Præsentation" as l2 {
 package "Lag3 - Logik" as l3 {
 [UniSkema service]
 }
+package "Lag4 - Sikkerhed" as l4 {
+[UniSkema sikkerhed] as a
+}
 package "Lag5 - Common data" as l5 {
 [SQL database]
 }
-
 package "Lag6 - Ekstern data" as l6 {
 [KU database]
 [DTU database]
 }
 
-}
-package "Lag4 - Sikkerhed" as l4 {
-[UniSkema sikkerhed] as a
-}
-
 l1 -> l4
 l2 -> l4
-l3 -> l4
-l5 -> l4
-l6 -> l4
-
+l4 <- l3
+l4 <- l5
+l4 <- l6
 
 [Studerende] ..> [UniSkema]
 [Skemasekretær] ..> [UniSkema]
-
 [Lærere] ..> [UniSkema]
 [UniSkema] ..> [UniSkema service]
 [UniSkema service] ..> [SQL database]
 [SQL database] ..> [KU database]
 [SQL database] ..> [DTU database]
-
-
-
 @enduml
