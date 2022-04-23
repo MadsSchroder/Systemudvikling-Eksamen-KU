@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
+from datetime import date
+
 
 def get_connection():
     connection = mysql.connector.connect(
@@ -64,5 +66,19 @@ def get_classes(userid):
     connection.close()
     return class_list
 
-test=get_classes(1)
+def get_classes_on_date(userid):
+    connection = get_connection()
+    mycursor = connection.cursor()
+    class_list=[]
+    query = ("SELECT courseID FROM attendscourse where userid = %s")
+    mycursor.execute(query, (userid,))
+    for (classes) in mycursor:
+        class_list.append(classes)
+    mycursor.close()
+    connection.close()
+    return class_list
+
+
+test=check_password("Student", "test")
 print(test)
+
