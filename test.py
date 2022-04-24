@@ -1,48 +1,36 @@
 import sys
-from PyQt6.QtWidgets import *
-from PyQt6.QtGui import *
-from PyQt6 import QtWidgets
-from PyQt6.QtCore import *
-from PyQt6 import QtCore
-from PyQt6.QtWidgets import QMainWindow
-from PyQt6.QtWidgets import QApplication
 from PyQt6 import uic
-from os import path
-from PyQt6.uic import loadUiType
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QWidget, QMainWindow, QApplication, QTableWidget, QTableWidgetItem
 import dbconnection
 
 class teacherui(QMainWindow):
     def __init__(self):
         super(teacherui, self).__init__()
         uic.loadUi("UI/teacherwindow.ui",self)
-        # self.Handel_Buttons()
-        self.GET_DATA()
+        self.tableWidget1.setColumnWidth(0, 100)
+        self.tableWidget1.setColumnWidth(1, 100)
+        self.tableWidget1.setColumnWidth(2, 100)
+        self.tableWidget1.setHorizontalHeaderLabels(["Location", "Starttidspunkt", "Sluttidspunks"])
+        self.loaddata()
 
-        #Definerer UI filens widgets
-
-        #Hvad widgets skal gøre
-
-        #Viser appen
         self.show()
 
-    # def Handel_Buttons(self):
-    #     self.pushButton.clicked.connect(self.GET_DATA)
-
-    def GET_DATA(self):
-        dbconnect = dbconnection.get_connection()
-        mycursor = dbconnect.cursor()
-        query = "SELECT * FROM users"
-
-        # result = mycursor.execute(query)
-
-        # self.tableWidget.setRowCount(0)
-
-        for row in mycursor.execute(query):
+    def loaddata(self):
+        #people=[{"name":"John","age":45,"address":"New York"}, {"name":"Mark", "age":40,"address":"LA"}, {"name":"George","age":30,"address":"London"}]
+        connection = dbconnection.get_connection()
+        cursor = connection.cursor()
+        query = "SELECT location, start, end FROM testers WHERE classdate = '2022-04-30'"
+        cursor.execute(query)
+        cur = cursor.fetchall()
+        self.tableWidget1.setRowCount(50)
+        tablerow=0
+        for row in cur:
             print(row)
-            # self.tableWidget.insertRow(row_number)
-            # for column_number, data in enumerate(row_data):
-            #     self.tableWidget.setItem(row_number, column_number, QTableWidgetItem(str(data)))
-
+            self.tableWidget1.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+            self.tableWidget1.setItem(tablerow, 1, QtWidgets.QTableWidgetItem(row[1]))
+            self.tableWidget1.setItem(tablerow, 2, QtWidgets.QTableWidgetItem(row[2]))
+            tablerow+=1
 
 #Initialiserer appen
 app = QApplication(sys.argv)

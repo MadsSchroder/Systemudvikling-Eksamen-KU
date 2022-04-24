@@ -8,12 +8,12 @@ class teacherwindowUI(QMainWindow):
     def __init__(self):
         super(teacherwindowUI, self).__init__()
         uic.loadUi("UI/teacherwindow.ui", self)
-        self.calendarWidget.selectionChanged.connect(self.calendarDateChanged)
+        self.calendarWidget2.selectionChanged.connect(self.calendarDateChanged)
         self.calendarDateChanged()
 
     def calendarDateChanged(self):
         print("The calender date was changed")
-        dateSelected = self.calendarWidget.selectedDate().toPyDate()
+        dateSelected = self.calendarWidget2.selectedDate().toPyDate()
         print("Date Selected:", dateSelected)
         self.showScheduleOnGivenDate(dateSelected)
 
@@ -21,14 +21,12 @@ class teacherwindowUI(QMainWindow):
         self.ScheduleList.clear()
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = ("SELECT * FROM classes WHERE classdate = %s")
-        row = (date,)
-        cursor.execute(query, row)
-
+        query = ("SELECT location, start, end FROM testers WHERE classdate = %s")
+        cursor.execute(query, (date,))
         results = cursor.fetchall()
         for result in results:
-            item = QListWidgetItem(result)
-            self.ScheduleList.addItem(item)
+            #item = QListWidgetItem((result[0]),(result[1]))
+            self.ScheduleList.addItems(result)
 
 
 if __name__ == "__main__":
