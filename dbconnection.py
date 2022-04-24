@@ -1,9 +1,8 @@
 import datetime
-
 import mysql.connector
 from mysql.connector import Error
 from datetime import date
-from instanceclasses import instantiateclasses
+
 
 def get_connection():
     connection = mysql.connector.connect(
@@ -222,14 +221,13 @@ def APPROVED_CLASS_CHANGE(id):
     cursor.close()
     connection.close()
     CHANGE_CLASS(this_data[0], this_data[1], this_data[2], this_data[3], this_data[4])
+    DECLINE_CLASS_CHANGE(id)
 
-#test=REQUEST_CHANGE_CLASS(3, "", "2022-01-15", "", "")
-#test=CREATE_CHANGE_FROM_CLASS(3)
-#test=APPROVED_CLASS_CHANGE(3)
-#print(test)
-#CREATE_NEW_CLASSES('Programmering - fra python','2022-04-30','08:00:00','17:00:00', 1)
-#UPDATE_LOCATION('Python', 11)
-#UPDATE_DATE('2022-04-01', 11)
-#UPDATE_TIME('08:00:00', '13:00:00', 11)
-#get_classes_on_datess()
-#print(get_classes_on_datess)
+def DECLINE_CLASS_CHANGE(id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    query = "DELETE FROM changes WHERE classesid = %s"
+    cursor.execute(query, (id,))
+    connection.commit()
+    cursor.close()
+    connection.close()

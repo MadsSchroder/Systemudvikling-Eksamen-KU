@@ -49,208 +49,242 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Hovedmenu</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
       <string>Skema</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QListWidget" name="ScheduleList">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>10</y>
-        <width>981</width>
-        <height>501</height>
+        <x>440</x>
+        <y>50</y>
+        <width>531</width>
+        <height>251</height>
        </rect>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>1000</width>
-        <height>600</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <attribute name="horizontalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>190</number>
-      </attribute>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>190</number>
-      </attribute>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderMinimumSectionSize">
-       <number>51</number>
-      </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>51</number>
-      </attribute>
-      <attribute name="verticalHeaderHighlightSections">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderStretchLastSection">
-       <bool>false</bool>
-      </attribute>
-      <row>
-       <property name="text">
-        <string>8</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>9</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>10</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>11</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>12</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>13</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>14</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>15</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>16</string>
-       </property>
-      </row>
-      <column>
-       <property name="text">
-        <string>Mandag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Tirsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Onsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Torsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Fredag</string>
-       </property>
-      </column>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Ændringer</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QCalendarWidget" name="calendarWidget">
       <property name="geometry">
        <rect>
-        <x>3</x>
-        <y>40</y>
-        <width>990</width>
-        <height>481</height>
+        <x>10</x>
+        <y>50</y>
+        <width>411</width>
+        <height>450</height>
        </rect>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>1000</width>
-        <height>600</height>
-       </size>
+     </widget>
+     <widget class="QLineEdit" name="Line_courseid">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>400</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true"/>
+      <property name="text">
+       <string/>
       </property>
-      <column>
-       <property name="text">
-        <string>Mandag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Tirsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Onsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Torsdag</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Fredag</string>
-       </property>
-      </column>
+      <property name="placeholderText">
+       <string>kursusid </string>
+      </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>221</width>
-        <height>16</height>
+        <x>440</x>
+        <y>330</y>
+        <width>141</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Lav ny forelæsning</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>10</y>
-        <width>75</width>
-        <height>24</height>
+        <x>450</x>
+        <y>440</y>
+        <width>111</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Format: xx:xx:xx</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>380</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Format: xxxx-xx-xx</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Line_location">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>400</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Location</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Line_date">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>400</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Date</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Line_start">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>460</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Start tidspunkt</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>440</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Format: xx:xx:xx</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Line_end">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>460</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="accessibleName">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Slut tidspunkt</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="make_class">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>460</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>udgiv forelæsning</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab2">
+     <attribute name="title">
+      <string>Ændringer</string>
+     </attribute>
+     <widget class="QListWidget" name="ScheduleList2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>971</width>
+        <height>231</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="hent_anmodninger">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hent Anmodninger</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Line_classid">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>371</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>ClassID nr</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>340</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Besvar ændring</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GodkendAnmodning">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>370</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Godkend anmodning</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AfvisAnmodning">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>430</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Afvis anmodning</string>
       </property>
      </widget>
     </widget>
@@ -268,7 +302,7 @@
      <string notr="true">font: 500 30pt;</string>
     </property>
     <property name="text">
-     <string>UniSkema4</string>
+     <string>UniSkema</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
