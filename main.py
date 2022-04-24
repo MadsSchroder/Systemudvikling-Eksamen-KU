@@ -33,7 +33,8 @@ class Login(QMainWindow):
         elif verification[0] == True and verification[2] == 2:
             print(verification)
             uic.loadUi("UI/teacherwindow.ui", self)
-            Teacher.calendarDateChanged()
+            #Teacher.teacherwindowUI()
+            #Teacher.calendarDateChanged()
 
         elif verification[0] == True and verification[2] == 3:
             uic.loadUi("UI/adminwindow.ui", self)

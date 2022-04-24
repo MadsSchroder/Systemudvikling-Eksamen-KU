@@ -1,3 +1,5 @@
+import datetime
+
 import mysql.connector
 from mysql.connector import Error
 from datetime import date
@@ -54,14 +56,15 @@ def get_classes(userid):
     mycursor = connection.cursor()
     query = ("SELECT courseID FROM attendscourse where userid = %s")
     mycursor.execute(query, (userid,))
-    this_courseid = 0
+    this_courseids = []
     for (course) in mycursor:
-        this_courseid = course[0]
+        this_courseids.append(course)
     query2 = ("SELECT * FROM classes where courseid = %s")
     class_list=[]
-    mycursor.execute(query2, (this_courseid,))
-    for (classes) in mycursor:
-        class_list.append(classes)
+    for (courses) in this_courseids:
+        mycursor.execute(query2, (courses[0],))
+        for (classes) in mycursor:
+            class_list.append(classes)
     mycursor.close()
     connection.close()
     return class_list
@@ -78,33 +81,6 @@ def get_classes_on_date(userid):
     connection.close()
     return class_list
 
-# def get_classes_on_datess():
-#     connection = get_connection()
-#     mycursor = connection.cursor()
-#     query = ("SELECT * FROM classes")
-#     mycursor.execute(query)
-#     class_list = []
-#     result = mycursor.fetchall()
-#     for row in result:
-#         class_list.append(row)
-#     mycursor.close()
-#     connection.close()
-#     return class_list
-
-def testere():
-    connection = get_connection()
-    mycursor = connection.cursor()
-    new = testlist = []
-    query = ("SELECT * FROM classes")
-    mycursor.execute(query)
-    classfetch = mycursor.fetchall()
-    for (classeslist) in range(len(classfetch)):
-        testlist.append(
-            instantiateclasses(classfetch[classeslist][0], classfetch[classeslist][1], classfetch[classeslist][2],
-                    classfetch[classeslist][3], classfetch[classeslist][4], classfetch[classeslist][5]))
-
-    return new
-
 def CREATE_NEW_CLASSES(location, date, start, end, id):
     connection = get_connection()
     cursor = connection.cursor()
@@ -115,7 +91,7 @@ def CREATE_NEW_CLASSES(location, date, start, end, id):
     cursor.close()
     connection.close()
 
-def UPDATE_LOCATION(location, id):
+def UPDATE_LOCATION_CLASSES(location, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (location, id)
@@ -125,7 +101,7 @@ def UPDATE_LOCATION(location, id):
     cursor.close()
     connection.close()
 
-def UPDATE_DATE(date, id):
+def UPDATE_DATE_CLASSES(date, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (date, id)
@@ -135,17 +111,122 @@ def UPDATE_DATE(date, id):
     cursor.close()
     connection.close()
 
-def UPDATE_TIME(start, end, id):
+def UPDATE_TIMESTART_CLASSES(start, id):
     connection = get_connection()
     cursor = connection.cursor()
-    maininput = (start, end, id)
-    query = """UPDATE classes SET classstart = (%s), classend = (%s) WHERE id = (%s)"""
+    maininput = (start, id)
+    query = """UPDATE classes SET classstart = (%s) WHERE id = (%s)"""
     cursor.execute(query, maininput,)
     connection.commit()
     cursor.close()
     connection.close()
 
+def UPDATE_TIMEEND_CLASSES(end, id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    maininput = (end, id)
+    query = """UPDATE classes SET classend = (%s) WHERE id = (%s)"""
+    cursor.execute(query, maininput,)
+    connection.commit()
+    cursor.close()
+    connection.close()
 
+def CREATE_CHANGE_FROM_CLASS(id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    query = """SELECT * FROM changes WHERE classesid = %s"""
+    cursor.execute(query, (id, ))
+    existing = cursor.fetchall()
+    if existing != []:
+        return
+    query1 = """SELECT * FROM classes WHERE id = %s"""
+    cursor.execute(query1, (id,))
+    this_data = ()
+    for (data) in cursor:
+        this_data = data
+    query2 = """INSERT INTO changes(classesid, location, date, start, end, courseid) VALUES (%s, %s, %s, %s, %s, %s)"""
+    cursor.execute(query2, this_data)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def UPDATE_LOCATION_CHANGES(location, id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    maininput = (location, id)
+    query = """UPDATE changes SET location = (%s) WHERE classesid = (%s)"""
+    cursor.execute(query, maininput,)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def UPDATE_DATE_CHANGES(date, id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    maininput = (date, id)
+    query = """UPDATE changes SET date = (%s) WHERE classesid = (%s)"""
+    cursor.execute(query, maininput,)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def UPDATE_TIMESTART_CHANGES(start, id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    maininput = (start, id)
+    query = """UPDATE changes SET start = (%s) WHERE classesid = (%s)"""
+    cursor.execute(query, maininput,)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def UPDATE_TIMEEND_CHANGES(end, id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    maininput = (end, id)
+    query = """UPDATE changes SET end = (%s) WHERE classesid = (%s)"""
+    cursor.execute(query, maininput,)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def REQUEST_CHANGE_CLASS(id, location, date, start, end):
+    CREATE_CHANGE_FROM_CLASS(id)
+    if location != "":
+        UPDATE_LOCATION_CHANGES(location, id)
+    if date != "":
+        UPDATE_DATE_CHANGES(date, id)
+    if start != "":
+        UPDATE_TIMESTART_CHANGES(start, id)
+    if end != "":
+        UPDATE_TIMEEND_CHANGES(end, id)
+
+def CHANGE_CLASS(id, location, date, start, end):
+    if location != "":
+        UPDATE_LOCATION_CLASSES(location, id)
+    if date != "":
+        UPDATE_DATE_CLASSES(date, id)
+    if start != "":
+        UPDATE_TIMESTART_CLASSES(start, id)
+    if end != "":
+        UPDATE_TIMEEND_CLASSES(end, id)
+
+def APPROVED_CLASS_CHANGE(id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    query = """SELECT classesid, location, date, start, end FROM changes WHERE classesid = %s"""
+    cursor.execute(query, (id,))
+    this_data = ()
+    for (data) in cursor:
+        this_data = data
+    cursor.close()
+    connection.close()
+    CHANGE_CLASS(this_data[0], this_data[1], this_data[2], this_data[3], this_data[4])
+
+#test=REQUEST_CHANGE_CLASS(3, "", "2022-01-15", "", "")
+#test=CREATE_CHANGE_FROM_CLASS(3)
+#test=APPROVED_CLASS_CHANGE(3)
+#print(test)
 #CREATE_NEW_CLASSES('Programmering - fra python','2022-04-30','08:00:00','17:00:00', 1)
 #UPDATE_LOCATION('Python', 11)
 #UPDATE_DATE('2022-04-01', 11)

@@ -2,7 +2,9 @@ import sys
 from PyQt6.QtWidgets import QWidget, QMainWindow, QApplication, QLabel, QLineEdit, QPushButton, QTabWidget, QTableWidget, QListWidgetItem, QMessageBox
 from PyQt6 import uic
 import dbconnection
+import datetime
 
+current_userid = 0
 
 class teacherwindowUI(QMainWindow):
     def __init__(self):
@@ -21,12 +23,19 @@ class teacherwindowUI(QMainWindow):
         self.ScheduleList.clear()
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = ("SELECT location, start, end FROM testers WHERE classdate = %s")
+        query = ("SELECT classes.location, classes.classstart, classes.classend, courses.course FROM defaultdb.classes join defaultdb.courses where classes.courseid = courses.courseID AND classes.classdate = %s")
         cursor.execute(query, (date,))
         results = cursor.fetchall()
+        print("hej")
+        print(results)
         for result in results:
-            #item = QListWidgetItem((result[0]),(result[1]))
-            self.ScheduleList.addItems(result)
+            print(str(result[1]))
+            item = QListWidgetItem(result[3] + " " + result[0] + " " + result[1] + " " + result[2])
+            self.ScheduleList.addItem(item)
+
+    def showWindow(self, verification):
+        print(verification)
+        uic.loadUi("UI/teacherwindow.ui", self)
 
 
 if __name__ == "__main__":
