@@ -13,25 +13,25 @@ SkemaSekretær"1" --o "1..*" Skema
 Lærer"1" --o "1" Skema
 Skema"1" --* "1..*" Forelæsning
 Forelæsning"1" --o "1" Lokaler
+Studerende "1" --o "1" Skema
 
 class Bruger{
     Navn: str
-    Telefonnummer: varcher
+    Telefonnummer: str
     Adresse: str
-    E-mail: invarcher255
-    CPR-nummer: varcher
+    E-mail: str
+    CPR-nummer: str
     --
     HentNavn():
     HentTelefonnummer():
     HentAdresse():
     HentE-mail():
+    SeSkema():
     }
 class Studerende{
     Student ID: int
     Studieretning: Studieretning
     Hold: str
-    --
-    SeSkema():
     }
 class SkemaSekretær{
     Medarbejder ID: int
@@ -39,7 +39,6 @@ class SkemaSekretær{
     --
     RedigereSkema():
     BesvareAnmodning():
-    SeSkema():
     }
 class Universitet{
     Universitets ID: int
@@ -50,7 +49,6 @@ class Lærer{
     Kursusliste: list
     --
     ForeslåSkemaændring():
-    SeSkema():
     }
 class Lokaler{
     Lokation ID: int

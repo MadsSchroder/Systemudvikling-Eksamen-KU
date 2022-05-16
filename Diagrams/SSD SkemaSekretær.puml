@@ -12,9 +12,7 @@ else failed login
     Uniskema <-- Database: Bruger ikke godkendt
     SkemaSekretær <-- Uniskema: Logout
 end
-SkemaSekretær -> Uniskema: Vælger at se notifikationer
-SkemaSekretær <-- Uniskema: Viser notifikationerne
-SkemaSekretær -> Uniskema: Besvar anmodning om skemaændring
+SkemaSekretær -> Uniskema: Besvar anmodning
 Uniskema -> Database: Finder Lærerens anmodning
 Uniskema <-- Database: Henter Lærerens anmodning
 SkemaSekretær <-- Uniskema: Viser Lærerens anmodning
@@ -24,9 +22,9 @@ Uniskema <-- Database: Henter de involveredes skemaer
 SkemaSekretær <-- Uniskema: Viser de involveredes skemaer
 alt Godkendelse
     SkemaSekretær -> Uniskema: Lærerens anmodning godkendes
-    Uniskema -> Database: Ændre de involveredes skema
+    Uniskema -> Database: Redigere skema
     Uniskema <-- Database: Skema opdateret
-    SkemaSekretær <-- Uniskema: Viser det nye skema
+    SkemaSekretær <-- Uniskema: Vis skema
     SkemaSekretær -> Uniskema: Besvarer at lærerens anmodning godkendes
     Uniskema -> Database: Besked lagres i databasen
     Database -> Lærer: Sender besked til Læreren

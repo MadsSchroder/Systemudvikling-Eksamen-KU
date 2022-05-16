@@ -13,11 +13,11 @@ else failed login
     Uniskema <-- Database: Bruger ikke godkendt
     Lærer <-- Uniskema: Logout
 end
-Lærer -> Uniskema: Søger efter sit skema
-Uniskema -> Database: Finder Lærerens skema
-Uniskema <-- Database: Henter skemaet til Læreren
-Lærer <-- Uniskema: Viser skemaet til Læreren
-Lærer -> Uniskema: Anmod om ændring af skemaet
+Lærer -> Uniskema: Se skema
+Uniskema -> Database: Finder skema
+Uniskema <-- Database: Henter skema
+Lærer <-- Uniskema: Vis skema
+Lærer -> Uniskema: Foreslå skemaændring
 Uniskema -> Database: Anmodning lagres i databasen
 Database -> SkemaSekretær: Sender besked til SkemaSekretær
 return End connection
