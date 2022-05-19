@@ -21,6 +21,7 @@ class Login(QMainWindow):
 
         #Hvad widgets skal gøre
         self.LoginButton.clicked.connect(self.loginfunction)
+        self.Password.returnPressed.connect(self.loginfunction)
 
         #Viser appen
         self.show()
