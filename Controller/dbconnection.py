@@ -2,7 +2,7 @@ import datetime
 import mysql.connector
 from mysql.connector import Error
 from datetime import date
-
+import Models.Classes
 
 def get_connection():
     connection = mysql.connector.connect(

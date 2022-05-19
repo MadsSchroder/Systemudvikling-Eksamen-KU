@@ -1,15 +1,15 @@
-import sys
-from PyQt6.QtWidgets import QWidget, QMainWindow, QApplication, QLabel, QLineEdit, QPushButton, QTabWidget, QTableWidget, QListWidgetItem, QMessageBox
+from PyQt6.QtWidgets import QMainWindow, QListWidgetItem
 from PyQt6 import uic
-import dbconnection
+from Controller import dbconnection
 from datetime import datetime
+from Models.Classes import Classes
 
-current_userid = 1
 
 class adminwindowUI(QMainWindow):
-    def __init__(self):
+    def __init__(self, userid):
         super(adminwindowUI, self).__init__()
-        uic.loadUi("UI/adminwindow.ui", self)
+        uic.loadUi("Views/adminwindow.ui", self)
+        self.__userid = userid
         self.calendarWidget.selectionChanged.connect(self.calendarDateChanged)
         self.calendarDateChanged()
         self.showScheduleRequests()
@@ -22,20 +22,28 @@ class adminwindowUI(QMainWindow):
         print("The calender date was changed")
         dateSelected = self.calendarWidget.selectedDate().toPyDate()
         print("Date Selected:", dateSelected)
-        self.showScheduleOnGivenDate(dateSelected)
+        class_list = self.getClasses(dateSelected)
+        self.showScheduleOnGivenDate(class_list)
+        self.show()
 
-    def showScheduleOnGivenDate(self, date):
+    def showScheduleOnGivenDate(self, classList):
         self.ScheduleList.clear()
+        for result in classList:
+            item = QListWidgetItem("ClassID: " + str(result.get_id()) + " - " + result.get_coursename() + ", " + result.get_location() + ":" + "\n" +"   fra " + result.get_start() + " til " + result.get_end())
+            self.ScheduleList.addItem(item)
+
+    def getClasses(self, date):
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = ("SELECT classes.location, classes.classstart, classes.classend, courses.course, classes.id FROM defaultdb.classes join defaultdb.courses where classes.courseid = courses.courseID AND classes.classdate = %s")
-        cursor.execute(query, (date,))
+        query = (
+            "SELECT classes.location, classes.classstart, classes.classend, courses.course, classes.id FROM defaultdb.classes join defaultdb.courses where classes.courseid = courses.courseID AND classes.classdate = %s")
+        cursor.execute(query, (date,), )
         results = cursor.fetchall()
         print(results)
+        class_list = []
         for result in results:
-            print(str(result[1]))
-            item = QListWidgetItem("ClassID: " + str(result[4]) + " - " + result[3] + ", " + result[0] + ":" + "\n" +"   fra " + result[1] + ", til " + result[2])
-            self.ScheduleList.addItem(item)
+            class_list.append(Classes(result[4], result[0], result[1], result[2], result[3]))
+        return class_list
 
     def showScheduleRequests(self):
         self.ScheduleList2.clear()
@@ -56,7 +64,14 @@ class adminwindowUI(QMainWindow):
         start = self.Line_start.text()
         end = self.Line_end.text()
         print(id, location, date, start, end)
-        dbconnection.CREATE_NEW_CLASSES(location, date, start, end, id)
+        connection = dbconnection.get_connection()
+        cursor = connection.cursor()
+        maininput = (location, date, start, end, id)
+        query = """INSERT INTO classes(location, classdate, classstart, classend, courseid) VALUES (%s, %s, %s, %s, %s)"""
+        cursor.execute(query, maininput)
+        connection.commit()
+        cursor.close()
+        connection.close()
 
     def accept_change(self):
         id = self.Line_classid.text()
