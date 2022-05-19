@@ -217,6 +217,16 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>calendarWidget2</tabstop>
+  <tabstop>ScheduleList</tabstop>
+  <tabstop>Line_classid</tabstop>
+  <tabstop>Line_location</tabstop>
+  <tabstop>Line_date</tabstop>
+  <tabstop>Line_start</tabstop>
+  <tabstop>Line_end</tabstop>
+  <tabstop>sendAnmodning</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

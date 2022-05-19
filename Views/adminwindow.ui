@@ -45,7 +45,7 @@
      <string notr="true">font-size:16px;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -136,7 +136,7 @@
        </rect>
       </property>
       <property name="placeholderText">
-       <string>Location</string>
+       <string>Lokation</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="Line_date">
@@ -204,7 +204,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>udgiv forelæsning</string>
+       <string>Udgiv forelæsning</string>
       </property>
      </widget>
     </widget>
@@ -321,6 +321,22 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>calendarWidget</tabstop>
+  <tabstop>ScheduleList</tabstop>
+  <tabstop>Line_location</tabstop>
+  <tabstop>Line_date</tabstop>
+  <tabstop>Line_courseid</tabstop>
+  <tabstop>Line_start</tabstop>
+  <tabstop>Line_end</tabstop>
+  <tabstop>make_class</tabstop>
+  <tabstop>hent_anmodninger</tabstop>
+  <tabstop>ScheduleList2</tabstop>
+  <tabstop>Line_classid</tabstop>
+  <tabstop>GodkendAnmodning</tabstop>
+  <tabstop>AfvisAnmodning</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
