@@ -1,4 +1,5 @@
 @startuml
+autonumber
 Actor Lærer
 Activate Lærer
 Lærer -> Uniskema: Login
