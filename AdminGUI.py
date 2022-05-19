@@ -69,8 +69,8 @@ class adminwindowUI(QMainWindow):
     def displayInfo(self):
         self.show()
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    AdminUI = adminwindowUI()
-    AdminUI.show()
-    sys.exit(app.exec())
+#if __name__ == "__main__":
+#    app = QApplication(sys.argv)
+#    AdminUI = adminwindowUI()
+#    AdminUI.show()
+#    sys.exit(app.exec())

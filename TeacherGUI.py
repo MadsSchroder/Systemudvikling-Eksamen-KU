@@ -19,6 +19,7 @@ class teacherwindowUI(QMainWindow):
         dateSelected = self.calendarWidget2.selectedDate().toPyDate()
         print("Date Selected:", dateSelected)
         self.showScheduleOnGivenDate(dateSelected)
+        self.show()
 
     def showScheduleOnGivenDate(self, date):
         self.ScheduleList.clear()
@@ -46,8 +47,8 @@ class teacherwindowUI(QMainWindow):
     def displayInfo(self):
         self.show()
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    TeacherUI = teacherwindowUI()
-    TeacherUI.show()
-    sys.exit(app.exec())
+#if __name__ == "__main__":
+#    app = QApplication(sys.argv)
+#    TeacherUI = teacherwindowUI()
+#    TeacherUI.show()
+#    sys.exit(app.exec())

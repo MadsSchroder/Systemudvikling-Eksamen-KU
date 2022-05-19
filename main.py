@@ -2,12 +2,14 @@ import sys
 from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QPushButton
 from PyQt6 import uic
 import dbconnection
-import Teacher
+from TeacherGUI import teacherwindowUI
+from AdminGUI import adminwindowUI
+from StudentGUI import studentwindowUI
+
 
 class Login(QMainWindow):
     def __init__(self):
         super(Login, self).__init__()
-
         #Loader den specifikke UI fil
         uic.loadUi("UI/Login.ui",self)
 
@@ -27,18 +29,24 @@ class Login(QMainWindow):
         unilogin = self.Unilogin.text()
         password = self.Password.text()
         verification = dbconnection.check_password(unilogin, password)
+
         if verification[0] == True and verification[2] == 1:
-            uic.loadUi("UI/studentwindow.ui", self)
             print(verification)
+            self.close()
+            self.StudentGUI = studentwindowUI()
+            self.StudentGUI.show()
+
         if verification[0] == True and verification[2] == 2:
             print(verification)
-            uic.loadUi("UI/teacherwindow.ui", self)
-            #self.Teacher.teacherwindowUI.displayInfo()
-            #Teacher.calendarDateChanged()
+            self.close()
+            self.TeacherGUI = teacherwindowUI()
+            self.TeacherGUI.show()
 
         if verification[0] == True and verification[2] == 3:
-            uic.loadUi("UI/adminwindow.ui", self)
             print(verification)
+            self.close()
+            self.AdminGUI = adminwindowUI()
+            self.AdminGUI.show()
         else:
             print("error", verification)
 
