@@ -8,7 +8,7 @@ from Models.Classes import Classes
 class teacherwindowUI(QMainWindow):
     def __init__(self, userid):
         super(teacherwindowUI, self).__init__()
-        uic.loadUi("Views/teacherwindow.ui", self)
+        uic.loadUi("../Views/teacherwindow.ui", self)
         self.__userid = userid
         self.calendarWidget2.selectionChanged.connect(self.calendarDateChanged)
         self.calendarDateChanged()
@@ -54,8 +54,3 @@ class teacherwindowUI(QMainWindow):
     def displayInfo(self):
         self.show()
 
-#if __name__ == "__main__":
-#    app = QApplication(sys.argv)
-#    TeacherUI = teacherwindowUI()
-#    TeacherUI.show()
-#    sys.exit(app.exec())

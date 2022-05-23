@@ -8,7 +8,7 @@ from Models.Classes import Classes
 class adminwindowUI(QMainWindow):
     def __init__(self, userid):
         super(adminwindowUI, self).__init__()
-        uic.loadUi("Views/adminwindow.ui", self)
+        uic.loadUi("../Views/adminwindow.ui", self)
         self.__userid = userid
         self.calendarWidget.selectionChanged.connect(self.calendarDateChanged)
         self.calendarDateChanged()
