@@ -3,7 +3,6 @@ class Users:
 
     def __init__(self, id, password, usertypeid):
         self.__id = id
-#        self.__username = username
         self.__password = password
         self.__usertypeid = usertypeid
         self.users_list.append(self)
@@ -13,12 +12,6 @@ class Users:
 
     def set_id(self, new_id):
         self.__id = new_id
-
-#    def get_username(self):
-#        return self.__username
-
- #   def set_username(self, new_username):
- #       self.__username = new_username
 
     def get_password(self):
         return self.__password

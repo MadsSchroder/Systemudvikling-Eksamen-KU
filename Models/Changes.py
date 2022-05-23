@@ -1,13 +1,14 @@
 class Changes:
     changes_list = []
+    courseid = 0
 
-    def __init__(self, id, location, date, start, end, courseid):
-        self.__id = id
+    def __init__(self, id: int, location: str, date: str, start: str, end: str, courseid: int):
+        self.__id = int(id)
         self.__location = location
         self.__date = date
         self.__start = start
         self.__end = end
-        self.__courseid = courseid
+        self.__courseid = int(courseid)
         self.changes_list.append(self)
 
     def get_id(self):
