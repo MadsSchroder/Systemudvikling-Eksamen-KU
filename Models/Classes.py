@@ -1,7 +1,7 @@
 class Classes:
     classes_list = []
 
-    def __init__(self, id, location, start, end, coursename):
+    def __init__(self, id: int, location: str, start: str, end: str, coursename: str):
         self.__id = id
         self.__location = location
         self.__start = start
