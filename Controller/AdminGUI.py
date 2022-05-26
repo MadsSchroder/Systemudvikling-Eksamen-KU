@@ -36,7 +36,7 @@ class adminwindowUI(QMainWindow):
         db = dbconnection.get_connection()
         cursor = db.cursor()
         query = (
-            "SELECT classes.location, classes.classstart, classes.classend, courses.course, classes.id FROM defaultdb.classes join defaultdb.courses where classes.courseid = courses.courseID AND classes.classdate = %s")
+            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id FROM s206007.classes join s206007.courses where classes.courseid = courses.courseID AND classes.date = %s")
         cursor.execute(query, (date,), )
         results = cursor.fetchall()
         print(results)
@@ -49,7 +49,7 @@ class adminwindowUI(QMainWindow):
         self.ScheduleList2.clear()
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = ("SELECT changes.id, changes.classesid, changes.location, changes.date, changes.start, changes.end, courses.course FROM defaultdb.changes join defaultdb.courses where changes.courseid = courses.courseID")
+        query = ("SELECT changes.id, changes.classesid, changes.location, changes.date, changes.start, changes.end, courses.course FROM s206007.changes join s206007.courses where changes.courseid = courses.courseID")
         cursor.execute(query)
         results = cursor.fetchall()
         print(results)
@@ -67,7 +67,7 @@ class adminwindowUI(QMainWindow):
         connection = dbconnection.get_connection()
         cursor = connection.cursor()
         maininput = (location, date, start, end, id)
-        query = """INSERT INTO classes(location, classdate, classstart, classend, courseid) VALUES (%s, %s, %s, %s, %s)"""
+        query = """INSERT INTO classes(location, date, start, end, courseid) VALUES (%s, %s, %s, %s, %s)"""
         cursor.execute(query, maininput)
         connection.commit()
         cursor.close()

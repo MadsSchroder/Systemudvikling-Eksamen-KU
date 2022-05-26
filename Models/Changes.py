@@ -46,7 +46,3 @@ class Changes:
 
     def set_courseid(self, new_courseid):
         self.__courseid = new_courseid
-
-    # Streng formattering
-    def __str__(self):
-        return f" "

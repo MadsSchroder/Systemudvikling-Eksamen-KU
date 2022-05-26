@@ -1,4 +1,3 @@
-import datetime
 import mysql.connector
 from mysql.connector import Error
 from datetime import date
@@ -7,11 +6,10 @@ from Models.Users import Users
 
 def get_connection():
     connection = mysql.connector.connect(
-        host='uniskemadb-do-user-11280721-0.b.db.ondigitalocean.com',
-        port=25060,
-        database='defaultdb',
-        user='doadmin',
-        password='AVNS_qt-pIDU320VjzTt')
+        host='mysql-db.caprover.diplomportal.dk',
+        user='s206007',
+        password='wFaRtFVTr9H9VqakBsN91',
+        database='s206007')
     return connection
 
 def close_connection(connection):
@@ -21,7 +19,7 @@ def close_connection(connection):
 def check_username(username):
     connection = get_connection()
     mycursor = connection.cursor()
-    query = ("SELECT * FROM users where username = %s")
+    query = ("SELECT * FROM s206007.users where username = %s")
     mycursor.execute(query, (username,))
     myresult=mycursor.fetchall()
     if myresult:
@@ -35,7 +33,7 @@ def check_password(username, pw):
     mycursor = connection.cursor()
     if not check_username(username):
         return (False, "No user found", 0, 0)
-    query = ("SELECT id, password, usertypeid FROM users where username = %s")
+    query = ("SELECT id, password, usertypeid FROM s206007.users where username = %s")
     mycursor.execute(query, (username,))
     results = mycursor.fetchall()
     print(results)
@@ -51,12 +49,12 @@ def check_password(username, pw):
 def get_classes(userid):
     connection = get_connection()
     mycursor = connection.cursor()
-    query = ("SELECT courseID FROM attendscourse where userid = %s")
+    query = ("SELECT courseID FROM s206007.attendscourse where userid = %s")
     mycursor.execute(query, (userid,))
     this_courseids = []
     for (course) in mycursor:
         this_courseids.append(course)
-    query2 = ("SELECT * FROM classes where courseid = %s")
+    query2 = ("SELECT * FROM s206007.classes where courseid = %s")
     class_list=[]
     for (courses) in this_courseids:
         mycursor.execute(query2, (courses[0],))
@@ -70,7 +68,7 @@ def get_classes_on_date(userid):
     connection = get_connection()
     mycursor = connection.cursor()
     class_list=[]
-    query = ("SELECT courseID FROM attendscourse where userid = %s")
+    query = ("SELECT courseID FROM s206007.attendscourse where userid = %s")
     mycursor.execute(query, (userid,))
     for (classes) in mycursor:
         class_list.append(classes)
@@ -82,7 +80,7 @@ def CREATE_NEW_CLASSES(location, date, start, end, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (location, date, start, end, id)
-    query = """INSERT INTO classes(location, classdate, classstart, classend, courseid) VALUES (%s, %s, %s, %s, %s)"""
+    query = """INSERT INTO s206007.classes(location, date, start, end, courseid) VALUES (%s, %s, %s, %s, %s)"""
     cursor.execute(query, maininput)
     connection.commit()
     cursor.close()
@@ -92,7 +90,7 @@ def UPDATE_LOCATION_CLASSES(location, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (location, id)
-    query = """UPDATE classes SET location = (%s) WHERE id = (%s)"""
+    query = """UPDATE s206007.classes SET location = (%s) WHERE id = (%s)"""
     cursor.execute(query, maininput,)
     connection.commit()
     cursor.close()
@@ -102,7 +100,7 @@ def UPDATE_DATE_CLASSES(date, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (date, id)
-    query = """UPDATE classes SET classdate = (%s) WHERE id = (%s)"""
+    query = """UPDATE classes SET date = (%s) WHERE id = (%s)"""
     cursor.execute(query, maininput,)
     connection.commit()
     cursor.close()
@@ -112,7 +110,7 @@ def UPDATE_TIMESTART_CLASSES(start, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (start, id)
-    query = """UPDATE classes SET classstart = (%s) WHERE id = (%s)"""
+    query = """UPDATE classes SET start = (%s) WHERE id = (%s)"""
     cursor.execute(query, maininput,)
     connection.commit()
     cursor.close()
@@ -122,7 +120,7 @@ def UPDATE_TIMEEND_CLASSES(end, id):
     connection = get_connection()
     cursor = connection.cursor()
     maininput = (end, id)
-    query = """UPDATE classes SET classend = (%s) WHERE id = (%s)"""
+    query = """UPDATE classes SET end = (%s) WHERE id = (%s)"""
     cursor.execute(query, maininput,)
     connection.commit()
     cursor.close()

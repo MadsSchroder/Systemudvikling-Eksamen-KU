@@ -39,6 +39,3 @@ class Classes:
     def set_coursename(self, new_coursename):
         self.__coursename = new_coursename
 
-    # Streng formattering
-    def __str__(self):
-        return f" "

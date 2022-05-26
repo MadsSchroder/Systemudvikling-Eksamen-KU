@@ -32,7 +32,7 @@ class studentwindowUI(QMainWindow):
         db = dbconnection.get_connection()
         cursor = db.cursor()
         query = (
-            "SELECT classes.location, classes.classstart, classes.classend, courses.course, classes.id FROM defaultdb.classes JOIN defaultdb.courses, defaultdb.attendscourse WHERE classes.courseid = courses.courseID AND attendscourse.courseID = classes.courseid AND classes.classdate = %s AND attendscourse.userid = %s")
+            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id FROM s206007.classes JOIN s206007.courses, s206007.attendscourse WHERE classes.courseid = courses.courseID AND attendscourse.courseID = classes.courseid AND classes.date = %s AND attendscourse.userid = %s")
         cursor.execute(query, (date, self.__userid), )
         results = cursor.fetchall()
         print(results)
