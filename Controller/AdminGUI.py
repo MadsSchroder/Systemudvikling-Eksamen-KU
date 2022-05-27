@@ -36,13 +36,13 @@ class adminwindowUI(QMainWindow):
         db = dbconnection.get_connection()
         cursor = db.cursor()
         query = (
-            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id FROM s206007.classes join s206007.courses where classes.courseid = courses.courseID AND classes.date = %s")
+            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id, classes.courseID FROM s206007.classes join s206007.courses where classes.courseid = courses.courseID AND classes.date = %s")
         cursor.execute(query, (date,), )
         results = cursor.fetchall()
         print(results)
         class_list = []
         for result in results:
-            class_list.append(Classes(result[4], result[0], result[1], result[2], result[3]))
+            class_list.append(Classes(result[4], result[0], result[1], result[2], result[5], result[3]))
         return class_list
 
     def showScheduleRequests(self):

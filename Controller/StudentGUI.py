@@ -32,11 +32,11 @@ class studentwindowUI(QMainWindow):
         db = dbconnection.get_connection()
         cursor = db.cursor()
         query = (
-            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id FROM s206007.classes JOIN s206007.courses, s206007.attendscourse WHERE classes.courseid = courses.courseID AND attendscourse.courseID = classes.courseid AND classes.date = %s AND attendscourse.userid = %s")
+            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id, classes.courseID FROM s206007.classes JOIN s206007.courses, s206007.attendscourse WHERE classes.courseid = courses.courseID AND attendscourse.courseID = classes.courseid AND classes.date = %s AND attendscourse.userid = %s")
         cursor.execute(query, (date, self.__userid), )
         results = cursor.fetchall()
         print(results)
         class_list = []
         for result in results:
-            class_list.append(Classes(result[4], result[0], result[1], result[2], result[3]))
+            class_list.append(Classes(result[4], result[0], result[1], result[2], result[5] ,result[3]))
         return class_list
