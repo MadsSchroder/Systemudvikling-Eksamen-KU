@@ -51,6 +51,4 @@ class Classes:
         return f"Course: {self.__id}\nat {self.__location} on {self.__start}\nfrom {self.__end} until" \
                f" {self.__coursename}"
 
-    def printout(self) -> None:
-        self.__str__
 

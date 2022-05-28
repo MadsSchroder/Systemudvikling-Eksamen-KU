@@ -3,9 +3,8 @@ import os
 from xml.etree import ElementTree
 from Models.Classes import Classes
 
-
 class ClassesReader:
-    __file_name__ = 'ClassesWrote.xml'
+    __file_name__ = 'classesData.xml'
 
     def __init__(self):
         full_file = os.path.abspath(os.path.join('data', self.__file_name__))

@@ -4,22 +4,20 @@ from XML.classesWriter import ClassesWriter
 from Controller import dbconnection
 
 def main():
+    #Definerer main
     db = dbconnection.get_connection()
     cursor = db.cursor()
-    query = (
-        "SELECT classes.id, classes.location, classes.start, classes.end, classes.courseID, courses.course FROM s206007.classes JOIN s206007.courses WHERE classes.courseid = courses.courseID")
-    cursor.execute(query,)
+    query = ("SELECT classes.id, classes.location, classes.start, classes.end, classes.courseID, courses.course FROM s206007.classes JOIN s206007.courses WHERE classes.courseid = courses.courseID")
+    cursor.execute(query)
     results = cursor.fetchall()
-    print(results)
     objectlist = []
     for result in results:
-        objectlist.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5]))
-    return objectlist
+        objectlist.append(Classes(str(result[0]), str(result[1]), str(result[2]), str(result[3]), str(result[4]), str(result[5])))
 
 
-    objectlist[0].printout()
-    LW = ClassesWriter(objectlist[0])
-    LW.save()
+    objectlist[0].get_id()
+    Classes_Writer =  ClassesWriter(objectlist[0])
+    Classes_Writer.save()
         #object.erase()
 
 
