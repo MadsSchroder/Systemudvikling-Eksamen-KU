@@ -12,16 +12,17 @@ class ClassesReader:
         dom = ElementTree.parse(full_file)
 
         root = dom.getroot()
-        id = root.attrib['id']
+        id = root.attrib['ClassID']
         location = root.attrib['location']
-        start = root.attrib['start']
-        end = root.attrib['end']
+        start = root.attrib['start_time']
+        end = root.attrib['end_time']
         courseID = root.attrib['courseID']
         coursename = root.attrib['coursename']
 
         print("New lecture in", coursename)
 
         self.__Classes__ = Classes(id, location, start, end, courseID, coursename)
+
 
     def get_Classes(self) -> Classes:
         return self.__Classes__

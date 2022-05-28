@@ -2,7 +2,7 @@ class Classes:
     classes_list = []
 
     def __init__(self, id: int, location: str, start: str, end: str, courseID: int, coursename: str):
-        self.__id = int(id)
+        self.__id = id
         self.__location = location
         self.__start = start
         self.__end = end

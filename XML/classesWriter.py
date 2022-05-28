@@ -11,7 +11,7 @@ class ClassesWriter:
         self.__root__.set("ClassID", c.get_id())
         self.__root__.set("location", c.get_location())
         self.__root__.set("start_time", c.get_start())
-        self.__root__.set("end", c.get_end())
+        self.__root__.set("end_time", c.get_end())
         self.__root__.set("courseID", c.get_courseID())
         self.__root__.set("coursename", c.get_coursename())
 
