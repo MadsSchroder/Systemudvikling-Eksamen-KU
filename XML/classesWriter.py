@@ -8,11 +8,11 @@ class ClassesWriter:
     def __init__(self, c: Classes) -> None:
 
         self.__root__ = ET.Element("Classes")
-        self.__root__.set("ClassID", c.get_id())
+        self.__root__.set("ClassID", str(c.get_id()))
         self.__root__.set("location", c.get_location())
         self.__root__.set("start_time", c.get_start())
         self.__root__.set("end_time", c.get_end())
-        self.__root__.set("courseID", c.get_courseID())
+        self.__root__.set("courseID", str(c.get_courseID()))
         self.__root__.set("coursename", c.get_coursename())
 
     def save(self) -> None:
