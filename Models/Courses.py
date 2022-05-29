@@ -15,13 +15,13 @@ class Courses:
         return self.__courseID
 
     def set_courseID(self, new_courseID):
-        self.__courseID= new_courseID
+        self.__courseID= int(new_courseID)
 
     def get_year(self):
         return self.__year
 
     def set_year(self, new_year):
-        self.__year = new_year
+        self.__year = int(new_year)
 
     def get_university(self):
         return self.__university
@@ -33,7 +33,7 @@ class Courses:
         return self.__uniID
 
     def set_uniID(self, new_uniID):
-        self.__uniID = new_uniID
+        self.__uniID = int(new_uniID)
 
     def get_program(self):
         return self.__program
@@ -45,7 +45,7 @@ class Courses:
         return self.__programID
 
     def set_programID(self, new_programID):
-        self.__programID = new_programID
+        self.__programID = int(new_programID)
 
     def get_coursename(self):
         return self.__coursename

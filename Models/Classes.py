@@ -15,7 +15,7 @@ class Classes:
         return self.__classid
 
     def set_classid(self, new_classid):
-        self.__classid = new_classid
+        self.__classid = int(new_classid)
 
     def get_location(self):
         return self.__location
@@ -45,7 +45,7 @@ class Classes:
         return self.__classcourseID
 
     def set_classcourseID(self, new_classcourseID):
-        self.__classcourseID= new_classcourseID
+        self.__classcourseID= int(new_classcourseID)
 
     def get_coursename(self):
         return self.__coursename

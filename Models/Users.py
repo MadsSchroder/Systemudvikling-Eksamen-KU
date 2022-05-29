@@ -2,15 +2,15 @@ class Users:
     users_list = []
 
     def __init__(self, id: int, username: str, password: str, fname: str, lname: str, email: str, CPR: int, address: str, usertypeid: int):
-        self.__id = id
+        self.__id = int(id)
         self.__username = username
         self.__password = password
         self.__fname = fname
         self.__lname = lname
         self.__email = email
-        self.__cpr = CPR
+        self.__cpr = int(CPR)
         self.__address = address
-        self.__usertypeid = usertypeid
+        self.__usertypeid = int(usertypeid)
         self.users_list.append(self)
 
     def get_id(self):
@@ -50,7 +50,7 @@ class Users:
         return self.__cpr
 
     def set_cpr(self, new_cpr):
-        self.__cpr = new_cpr
+        self.__cpr = int(new_cpr)
 
     def get_address(self):
         return self.__address
@@ -62,7 +62,7 @@ class Users:
         return self.__usertypeid
 
     def set_usertypeid(self, new_usertypeid):
-        self.__usertypeid = new_usertypeid
+        self.__usertypeid = int(new_usertypeid)
 
     # Hvordan vores objekter bliver repræsenteret som string.
     def __str__(self):

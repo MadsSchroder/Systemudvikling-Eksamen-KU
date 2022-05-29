@@ -15,7 +15,7 @@ class Changes:
         return self.__id
 
     def set_id(self, new_id):
-        self.__id = new_id
+        self.__id = int(new_id)
 
     def get_location(self):
         return self.__location
@@ -45,4 +45,4 @@ class Changes:
         return self.__courseid
 
     def set_courseid(self, new_courseid):
-        self.__courseid = new_courseid
+        self.__courseid = int(new_courseid)
