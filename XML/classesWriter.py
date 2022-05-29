@@ -1,4 +1,3 @@
-import os
 from xml.etree.ElementTree import ElementTree, tostring
 import xml.etree.cElementTree as ET
 from xml.dom import minidom

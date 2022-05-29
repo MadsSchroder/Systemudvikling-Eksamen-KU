@@ -1,20 +1,20 @@
 from lxml import etree, objectify
 from io import BytesIO
-from Models.Courses import Courses
 from Models.Classes import Classes
-from XML.Elements import Elements
+from XML2.Elements import Elements
 
 
 class CoursesToXml:
-    def __init__(self, courses: Courses):
-        self.courses = courses
+    def __init__(self, classes: Classes):
+        self.classes = classes
 
     def write_file(self):
 
-        root = etree.Element("kurser")
-        for course in self.courses.get_courses():
-            course_element = Elements.create_course(course)
-            root.append(course_element)
+        root = etree.Element("Klasser")
+        print(self.classes)
+        for classes in self.classes.get_classid():
+            classes_element = Elements.create_classes(classes)
+            root.append(classes_element)
             # create studerende as sub element to the course element
 
           #  classes =  objectify.SubElement(course_element,"classes")

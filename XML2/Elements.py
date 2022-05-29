@@ -18,7 +18,6 @@ class Elements:
         Classes.end = classes_obj.get_end()
         Classes.classcourseID = classes_obj.get_classcourseID()
         Classes.coursename = classes_obj.get_coursename()
-
         return Classes
 
     @staticmethod
