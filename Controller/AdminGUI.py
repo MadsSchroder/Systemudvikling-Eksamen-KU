@@ -29,20 +29,19 @@ class adminwindowUI(QMainWindow):
     def showScheduleOnGivenDate(self, classList):
         self.ScheduleList.clear()
         for result in classList:
-            item = QListWidgetItem("ClassID: " + str(result.get_id()) + " - " + result.get_coursename() + ", " + result.get_location() + ":" + "\n" +"   fra " + result.get_start() + " til " + result.get_end())
+            item = QListWidgetItem("ClassID: " + str(result.get_classid()) + " - " + result.get_coursename() + ", " + result.get_location() + ":" + "\n" +"   fra " + result.get_start() + " til " + result.get_end())
             self.ScheduleList.addItem(item)
 
     def getClasses(self, date):
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = (
-            "SELECT classes.location, classes.start, classes.end, courses.course, classes.id, classes.courseID FROM s206007.classes join s206007.courses where classes.courseid = courses.courseID AND classes.date = %s")
+        query = ("SELECT classes.id, classes.location, classes.date, classes.start, classes.end, classes.courseid, courses.course, courses.courseid, courses.year, university.university, university.id, program.program, program.id FROM s206007.classes JOIN s206007.courses, s206007.program, s206007.university WHERE classes.courseid = courses.courseID AND courses.program = program.id AND courses.university = university.id AND classes.date = %s")
         cursor.execute(query, (date,), )
         results = cursor.fetchall()
         print(results)
         class_list = []
         for result in results:
-            class_list.append(Classes(result[4], result[0], result[1], result[2], result[5], result[3]))
+            class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12]))
         return class_list
 
     def showScheduleRequests(self):
@@ -83,9 +82,3 @@ class adminwindowUI(QMainWindow):
 
     def displayInfo(self):
         self.show()
-
-#if __name__ == "__main__":
-#    app = QApplication(sys.argv)
-#    AdminUI = adminwindowUI()
-#    AdminUI.show()
-#    sys.exit(app.exec())

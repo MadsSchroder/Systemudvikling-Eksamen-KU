@@ -27,7 +27,6 @@ def check_username(username):
     else:
         return False
 
-
 def check_password(username, pw):
     connection = get_connection()
     mycursor = connection.cursor()
@@ -44,7 +43,6 @@ def check_password(username, pw):
         return (True, "Success", result[2], result[0])
     else:
         return (False, "Wrong password", 0, 0)
-
 
 def get_classes(userid):
     connection = get_connection()

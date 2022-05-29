@@ -97,7 +97,7 @@ class Classes:
 
     # Hvordan vores objekter bliver repræsenteret som string.
     def __str__(self):
-        return f"Course: {self.__id}\nat {self.__location} on {self.__start}\nfrom {self.__end} until" \
+        return f"Course: {self.__classid}\nat {self.__location} on {self.__start}\nfrom {self.__end} until" \
                f" {self.__coursename}"
 
 
