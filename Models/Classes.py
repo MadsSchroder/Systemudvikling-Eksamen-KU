@@ -53,8 +53,6 @@ class Classes:
     def set_coursename(self, new_coursename):
         self.__coursename = new_coursename
 
-    def get_classes(self):
-        return self.classes_list
 
     # Hvordan vores objekter bliver repræsenteret som string.
     def __str__(self):

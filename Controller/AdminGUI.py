@@ -4,6 +4,10 @@ from Controller import dbconnection
 from datetime import datetime
 from Models.Classes import Classes
 from XML.ToXML import CoursesToXml
+from XML.FromXML import ClassesReader
+from lxml import etree, objectify
+
+
 from Models.Courses import Courses
 
 class adminwindowUI(QMainWindow):
@@ -18,7 +22,8 @@ class adminwindowUI(QMainWindow):
         self.make_class.clicked.connect(self.create_new_class)
         self.GodkendAnmodning.clicked.connect(self.accept_change)
         self.AfvisAnmodning.clicked.connect(self.decline_change)
-        self.xml_knap.clicked.connect(self.createXML)
+        self.xml_knap.clicked.connect(self.writeXML)
+        self.xml_knap_2.clicked.connect(self.readXML)
         self.Uni_knap.clicked.connect(self.findUNI)
 
     def calendarDateChanged(self):
@@ -83,7 +88,7 @@ class adminwindowUI(QMainWindow):
         id = self.Line_classid.text()
         dbconnection.DECLINE_CLASS_CHANGE(id)
 
-    def createXML(self):
+    def writeXML(self):
         id = self.line_kursusid.text()
         input = (id,)
 
@@ -100,6 +105,14 @@ class adminwindowUI(QMainWindow):
             class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6]))
         print("Write the following: ", class_list, " to XML/data/classes.xml")
         CoursesToXml(class_list).write_file()
+
+    def readXML(self):
+        inter = ClassesReader().get_Classes()
+        print(inter)  # print(
+
+        #dtd = etree.DTD(open('courses.dtd'))
+        #print("check generated courses.xml", dtd.validate(etree.parse('courses.xml')))
+        #print("check invalid courses_invalid.xml", dtd.validate(etree.parse('courses_invalid.xml')))
 
     def findUNI(self):
         self.Uni_list.clear()

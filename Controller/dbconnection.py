@@ -34,7 +34,6 @@ def check_password(username, pw):
         return (False, "No user found", 0, 0)
     #query = ("SELECT id, password, usertypeid FROM s206007.users where username = %s")
     query = ("SELECT * FROM s206007.users where username = %s")
-
     mycursor.execute(query, (username,))
     results = mycursor.fetchall()
     print(results)

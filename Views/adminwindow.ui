@@ -386,6 +386,19 @@
        <string>Søg</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="xml_knap_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>460</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udskriv kursus-skema til XML</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="label">
