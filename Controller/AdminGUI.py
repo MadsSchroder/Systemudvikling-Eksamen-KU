@@ -19,12 +19,14 @@ class adminwindowUI(QMainWindow):
         self.calendarDateChanged()
         self.showScheduleRequests()
         self.hent_anmodninger.clicked.connect(self.showScheduleRequests)
-        self.make_class.clicked.connect(self.create_new_class)
+        self.make_class_2.clicked.connect(self.create_new_class)
         self.GodkendAnmodning.clicked.connect(self.accept_change)
         self.AfvisAnmodning.clicked.connect(self.decline_change)
         self.xml_knap.clicked.connect(self.writeXML)
-        self.xml_knap_2.clicked.connect(self.readXML)
-        self.Uni_knap.clicked.connect(self.findUNI)
+        #self.xml_knap.clicked.connect(self.readXML)
+        self.Uni_knap_2.clicked.connect(self.findUNI)
+        self.Uni_knap_3.clicked.connect(self.Clear)
+
 
     def calendarDateChanged(self):
         print("The calender date was changed")
@@ -39,12 +41,16 @@ class adminwindowUI(QMainWindow):
         for result in classList:
             item = QListWidgetItem("ClassID: " + str(result.get_classid()) + " - " + result.get_coursename() + ", " + result.get_location() + ":" + "\n" +"   fra " + result.get_start() + " til " + result.get_end())
             self.ScheduleList.addItem(item)
+            self.label_9.setText(result.get_coursename())
+
 
     def getClasses(self, date):
+        KursusID = self.Universitet_3.text()
+        input = (date, KursusID)
         db = dbconnection.get_connection()
         cursor = db.cursor()
-        query = ("SELECT classes.id, classes.location, classes.date, classes.start, classes.end, classes.courseid, courses.course, courses.courseid, courses.year, university.university, university.id, program.program, program.id FROM s206007.classes JOIN s206007.courses, s206007.program, s206007.university WHERE classes.courseid = courses.courseID AND courses.program = program.id AND courses.university = university.id AND classes.date = %s")
-        cursor.execute(query, (date,), )
+        query = ("SELECT classes.id, classes.location, classes.date, classes.start, classes.end, classes.courseid, courses.course, courses.courseid, courses.year, university.university, university.id, program.program, program.id FROM s206007.classes JOIN s206007.courses, s206007.program, s206007.university WHERE classes.courseid = courses.courseID AND courses.program = program.id AND courses.university = university.id AND classes.date = %s AND classes.courseid = %s")
+        cursor.execute(query, input)
         results = cursor.fetchall()
         print(results)
         class_list = []
@@ -64,12 +70,13 @@ class adminwindowUI(QMainWindow):
             item = QListWidgetItem("ClassID: " + str(result[1]) + " - " + result[6] + ", " + result[2] + ": d. " + datetime.strftime(result[3], "%Y-%m-%d") +  " fra " + result[4] + " til " + result[5])
             self.ScheduleList2.addItem(item)
 
+
     def create_new_class(self):
-        id = self.Line_courseid.text()
-        location = self.Line_location.text()
-        date = self.Line_date.text()
-        start = self.Line_start.text()
-        end = self.Line_end.text()
+        id = self.Line_courseid_2.text()
+        location = self.Line_location_2.text()
+        date = self.Line_date_2.text()
+        start = self.Line_start_2.text()
+        end = self.Line_end_2.text()
         print(id, location, date, start, end)
         connection = dbconnection.get_connection()
         cursor = connection.cursor()
@@ -115,9 +122,8 @@ class adminwindowUI(QMainWindow):
         #print("check invalid courses_invalid.xml", dtd.validate(etree.parse('courses_invalid.xml')))
 
     def findUNI(self):
-        self.Uni_list.clear()
-        Uninr = self.Universitet.text()
-
+        self.ScheduleList.clear()
+        Uninr = self.Universitet_2.text()
         input = (Uninr,)
         db = dbconnection.get_connection()
         cursor = db.cursor()
@@ -129,8 +135,11 @@ class adminwindowUI(QMainWindow):
         print(results)
         for result in results:
             item = QListWidgetItem("Studieretning: " + str(result[0]) + ", Kursusid: " + str(result[1]) + ", fag:  " + str(result[2]))
-            self.Uni_list.addItem(item)
-            self.Uni_label.setText(result[3])
+            self.ScheduleList.addItem(item)
+            self.label_9.setText(result[3])
+
+    def Clear(self):
+        self.ScheduleList.clear()
 
     def displayInfo(self):
         self.show()

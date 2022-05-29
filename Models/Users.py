@@ -1,7 +1,7 @@
 class Users:
     users_list = []
 
-    def __init__(self, id, username, password, fname, lname, email, CPR, address, usertypeid):
+    def __init__(self, id: int, username: str, password: str, fname: str, lname: str, email: str, CPR: int, address: str, usertypeid: int):
         self.__id = id
         self.__username = username
         self.__password = password
@@ -34,11 +34,11 @@ class Users:
     def set_fname(self, new_fname):
         self.__fname = new_fname
 
-    def get_fname(self):
-        return self.__fname
+    def get_lname(self):
+        return self.__lname
 
-    def set_fname(self, new_fname):
-        self.__fname = new_fname
+    def set_lname(self, new_lname):
+        self.__lname = new_lname
 
     def get_email(self):
         return self.__email

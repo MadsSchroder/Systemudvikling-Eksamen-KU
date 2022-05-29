@@ -1,0 +1,211 @@
+@startuml
+Users -- Main
+Main -- StudentGUI
+Main -- TeacherGUI
+Main -- AdminGUI
+Login <|-- Main
+adminwindow <|-- AdminGUI
+studentwindow <|-- StudentGUI
+teacherwindow <|-- TeacherGUI
+DBConnection <.. Users
+DBConnection <.. Main
+DBConnection <.. StudentGUI
+DBConnection <.. TeacherGUI
+DBConnection <.. AdminGUI
+StudentGUI -- Classes
+TeacherGUI -- Classes
+AdminGUI -- Classes
+TeacherGUI -- Changes
+AdminGUI -- Changes
+AdminGUI -- Courses
+
+
+class Users{
+    id: int
+    username: str
+    password: str
+    fname: str
+    lname: str
+    email: str
+    CPR: int
+    address: str
+    usertypeid: int
+    --
+    get_id()
+    get_username()
+    set_username()
+    get_password()
+    set_password()
+    get_fname()
+    set_fname()
+    get_lname()
+    set_lname()
+    get_email()
+    set_email()
+    get_cpr()
+    set_cpr()
+    get_address()
+    set_address()
+    get_usertypeid()
+    set_usertypeid()
+    }
+class Main{
+    --
+    Loginfunktion()
+    }
+class DBConnection{
+    Connection: mysql.connector
+    --
+    get_connection()
+    close_connection()
+    check_username()
+    check_password()
+    get_classes()
+    get_classes_on_date()
+    CREATE_NEW_CLASSES()
+    UPDATE_LOCATION_CLASSES()
+    UPDATE_DATE_CLASSES()
+    UPDATE_TIMESTART_CLASSES()
+    UPDATE_TIMEEND_CLASSES()
+    CREATE_CHANGE_FROM_CLASS()
+    UPDATE_LOCATION_CHANGES()
+    UPDATE_DATE_CHANGES()
+    UPDATE_TIMESTART_CHANGES()
+    UPDATE_TIMEEND_CHANGES()
+    REQUEST_CHANGE_CLASS()
+    CHANGE_CLASS()
+    APPROVED_CLASS_CHANGE()
+    DECLINE_CLASS_CHANGE()
+    }
+class StudentGUI{
+    userid
+    --
+    calendarDateChanged()
+    showScheduleOnGivenDate()
+    getClasses()
+    }
+class AdminGUI{
+    userid
+    --
+    calendarDateChanged()
+    showScheduleOnGivenDate()
+    getClasses()
+    showScheduleRequests()
+    create_new_class()
+    accept_change()
+    decline_change()
+    writeXML()
+    readXML()
+    findUNI()
+    Clear()
+    displayInfo()
+    }
+class TeacherGUI{
+    userid
+    --
+    calendarDateChanged()
+    showScheduleOnGivenDate()
+    getClasses()
+    send_request()
+    displayInfo()
+    }
+class Classes{
+    classid: int
+    location: str
+    date: str
+    start: str
+    end: str
+    classcourseID: int
+    coursename: str
+    --
+    get_classid()
+    set_classid()
+    get_location()
+    set_location()
+    get_date()
+    set_date()
+    get_start()
+    set_start()
+    get_end()
+    set_end()
+    get_classcourseID()
+    set_classcourseID()
+    get_coursename()
+    set_coursename()
+    }
+class Courses{
+    courseID: int
+    year: int
+    university: str
+    uniID: int
+    program: str
+    programID: int
+    coursename: str):
+    --
+    get_courseID()
+    set_courseID()
+    get_year()
+    set_year()
+    get_university()
+    set_university()
+    get_uniID()
+    set_uniID()
+    get_program()
+    set_program()
+    get_programID()
+    set_programID()
+    get_coursename()
+    set_coursename()
+    }
+class Changes{
+    id: int
+    location: str
+    date: str
+    start: str
+    end: str
+    courseid: int
+    --
+    get_id()
+    set_id()
+    get_location()
+    set_location()
+    get_date()
+    set_date()
+    get_start()
+    set_start()
+    get_end()
+    set_end()
+    get_courseid()
+    set_courseid()
+    }
+class Login{
+    Username
+    Password
+    LoginButton
+    GlemtLoginButton
+    }
+class adminwindow{
+    calendarWidget2: QCalendarWidget
+    ScheduleList: QListWidget
+    SendAnmodning: QPushButton
+    TabWidget: QTabWidget
+    --
+    addItem()
+    clear()
+    }
+class studentwindow{
+    calendarWidget2: QCalendarWidget
+    ScheduleList: QListWidget
+    --
+    addItem()
+    clear()
+    }
+class teacherwindow{
+    calendarWidget2: QCalendarWidget
+    ScheduleList: QListWidget
+    SendAnmodning: QPushButton
+    --
+    addItem()
+    clear()
+    }
+@enduml
