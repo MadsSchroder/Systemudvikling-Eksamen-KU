@@ -1,30 +1,48 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Klasser>
   <Classes>
-    <classid>5</classid>
-    <location>Universitetsparken 4</location>
-    <date>2022-06-01</date>
+    <classid>1</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-27</date>
     <start>08:00:00</start>
     <end>12:00:00</end>
-    <classcourseID>2</classcourseID>
-    <coursename>Interaktionsdesign</coursename>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
   </Classes>
   <Classes>
-    <classid>6</classid>
-    <location>Universitetsparken 4</location>
-    <date>2022-06-02</date>
+    <classid>2</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-30</date>
+    <start>08:00:00</start>
+    <end>13:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+  <Classes>
+    <classid>3</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-31</date>
     <start>08:00:00</start>
     <end>12:00:00</end>
-    <classcourseID>2</classcourseID>
-    <coursename>Interaktionsdesign</coursename>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
   </Classes>
   <Classes>
-    <classid>7</classid>
-    <location>Universitetsparken 4</location>
-    <date>2022-06-01</date>
+    <classid>4</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-27</date>
     <start>13:00:00</start>
+    <end>14:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+  <Classes>
+    <classid>8</classid>
+    <location>Hjemme</location>
+    <date>2022-05-28</date>
+    <start>10:00:00</start>
     <end>15:00:00</end>
-    <classcourseID>2</classcourseID>
-    <coursename>Interaktionsdesign</coursename>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
   </Classes>
 </Klasser>

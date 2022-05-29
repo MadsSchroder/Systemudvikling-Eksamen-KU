@@ -22,7 +22,7 @@ class adminwindowUI(QMainWindow):
         self.make_class_2.clicked.connect(self.create_new_class)
         self.GodkendAnmodning.clicked.connect(self.accept_change)
         self.AfvisAnmodning.clicked.connect(self.decline_change)
-        self.xml_knap.clicked.connect(self.writeXML)
+        self.xml_knap_3.clicked.connect(self.writeXML)
         #self.xml_knap.clicked.connect(self.readXML)
         self.Uni_knap_2.clicked.connect(self.findUNI)
         self.Uni_knap_3.clicked.connect(self.Clear)
@@ -96,9 +96,8 @@ class adminwindowUI(QMainWindow):
         dbconnection.DECLINE_CLASS_CHANGE(id)
 
     def writeXML(self):
-        id = self.line_kursusid.text()
+        id = self.line_kursusid_2.text()
         input = (id,)
-
         # Create some nested objects: a courseList with som dummy courses-each with its own list of students
         print("Taking objects from DB")
         db = dbconnection.get_connection()
@@ -112,6 +111,7 @@ class adminwindowUI(QMainWindow):
             class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6]))
         print("Write the following: ", class_list, " to XML/data/classes.xml")
         CoursesToXml(class_list).write_file()
+        return class_list
 
     def readXML(self):
         inter = ClassesReader().get_Classes()
@@ -140,6 +140,8 @@ class adminwindowUI(QMainWindow):
 
     def Clear(self):
         self.ScheduleList.clear()
+        self.label_9.clear()
+        self.Universitet_2.clear()
 
     def displayInfo(self):
         self.show()

@@ -54,10 +54,10 @@
      <widget class="QListWidget" name="ScheduleList">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>432</x>
         <y>250</y>
-        <width>561</width>
-        <height>271</height>
+        <width>551</width>
+        <height>221</height>
        </rect>
       </property>
      </widget>
@@ -148,7 +148,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Clear</string>
+        <string>Ryd</string>
        </property>
       </widget>
      </widget>
@@ -330,6 +330,35 @@
        </property>
       </widget>
      </widget>
+     <widget class="QPushButton" name="xml_knap_3">
+      <property name="geometry">
+       <rect>
+        <x>701</x>
+        <y>480</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udskriv kursus-skema til XML</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_kursusid_2">
+      <property name="geometry">
+       <rect>
+        <x>491</x>
+        <y>490</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Kursus nr</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab2">
      <attribute name="title">
@@ -411,254 +440,6 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Se kursusID</string>
-     </attribute>
-     <widget class="QListWidget" name="Uni_list">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>120</y>
-        <width>621</width>
-        <height>301</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="Universitet">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>50</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Universitet nr</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="Uni_label">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>50</y>
-        <width>241</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Vælg Universitet nr</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_8">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>90</y>
-        <width>341</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Kursur</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="xml_knap">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>470</y>
-        <width>221</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Udskriv kursus-skema til XML</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="line_kursusid">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>440</y>
-        <width>171</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Kursus nr</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Uni_knap">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>50</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Søg</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="xml_knap_2">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>460</y>
-        <width>221</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Udskriv kursus-skema til XML</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>680</x>
-        <y>120</y>
-        <width>281</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Lav en ny forelæsning:</string>
-      </property>
-      <widget class="QLineEdit" name="Line_date">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>110</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="placeholderText">
-        <string>Date</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>160</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Format: xx:xx:xx</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="Line_start">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="placeholderText">
-        <string>Start tidspunkt</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>90</y>
-         <width>131</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Format: xxxx-xx-xx</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="Line_location">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>110</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="placeholderText">
-        <string>Lokation</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>160</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Format: xx:xx:xx</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="Line_end">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>180</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="accessibleName">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>Slut tidspunkt</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="Line_courseid">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>kursusid </string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="make_class">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>240</y>
-         <width>151</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Udgiv forelæsning</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -696,12 +477,6 @@
   <tabstop>tabWidget</tabstop>
   <tabstop>calendarWidget</tabstop>
   <tabstop>ScheduleList</tabstop>
-  <tabstop>Line_location</tabstop>
-  <tabstop>Line_date</tabstop>
-  <tabstop>Line_courseid</tabstop>
-  <tabstop>Line_start</tabstop>
-  <tabstop>Line_end</tabstop>
-  <tabstop>make_class</tabstop>
   <tabstop>hent_anmodninger</tabstop>
   <tabstop>ScheduleList2</tabstop>
   <tabstop>Line_classid</tabstop>
