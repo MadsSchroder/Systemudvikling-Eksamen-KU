@@ -2,7 +2,6 @@ from lxml import objectify
 from Models.Classes import Classes
 from Models.Courses import Courses
 
-
 class Elements:
     @staticmethod
     def create_class(classes_obj: Classes):
@@ -30,5 +29,6 @@ class Elements:
         courses.program = courses_obj.get_program()
         courses.programID = courses_obj.get_programID()
         courses.coursename = courses_obj.get_coursename()
+        courses.classesincourse = courses_obj.get_classesincourse()
         # note that we haven't appended the student list - it will be handled elsewhere
         return courses

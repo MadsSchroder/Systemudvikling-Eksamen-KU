@@ -3,7 +3,8 @@ from PyQt6 import uic
 from Controller import dbconnection
 from datetime import datetime
 from Models.Classes import Classes
-
+from XML.ToXML import CoursesToXml
+from Models.Courses import Courses
 
 class adminwindowUI(QMainWindow):
     def __init__(self, userid):
@@ -17,6 +18,8 @@ class adminwindowUI(QMainWindow):
         self.make_class.clicked.connect(self.create_new_class)
         self.GodkendAnmodning.clicked.connect(self.accept_change)
         self.AfvisAnmodning.clicked.connect(self.decline_change)
+        self.xml_knap.clicked.connect(self.createXML)
+        self.Uni_knap.clicked.connect(self.findUNI)
 
     def calendarDateChanged(self):
         print("The calender date was changed")
@@ -79,6 +82,42 @@ class adminwindowUI(QMainWindow):
     def decline_change(self):
         id = self.Line_classid.text()
         dbconnection.DECLINE_CLASS_CHANGE(id)
+
+    def createXML(self):
+        id = self.line_kursusid.text()
+        input = (id,)
+
+        # Create some nested objects: a courseList with som dummy courses-each with its own list of students
+        print("Taking objects from DB")
+        db = dbconnection.get_connection()
+        cursor = db.cursor()
+        query = (
+            "SELECT classes.id, classes.location, classes.date, classes.start, classes.end, classes.courseid, courses.course FROM s206007.classes JOIN s206007.courses WHERE classes.courseid = courses.courseID AND classes.courseid = %s")
+        cursor.execute(query, input)
+        classresults = cursor.fetchall()
+        class_list = []
+        for result in classresults:
+            class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6]))
+        print("Write the following: ", class_list, " to XML/data/classes.xml")
+        CoursesToXml(class_list).write_file()
+
+    def findUNI(self):
+        self.Uni_list.clear()
+        Uninr = self.Universitet.text()
+
+        input = (Uninr,)
+        db = dbconnection.get_connection()
+        cursor = db.cursor()
+        query = (
+            #"SELECT * FROM s206007.courses JOIN s206007.university, s206007.programs WHERE university.courseid = courses.courseID AND course classes.courseid = %s")
+            "SELECT program.program, courses.courseid, courses.course, university.university FROM s206007.courses JOIN s206007.university, s206007.program WHERE university.id = courses.university AND program.id = courses.program AND university.id= %s")
+        cursor.execute(query, input)
+        results = cursor.fetchall()
+        print(results)
+        for result in results:
+            item = QListWidgetItem("Studieretning: " + str(result[0]) + ", Kursusid: " + str(result[1]) + ", fag:  " + str(result[2]))
+            self.Uni_list.addItem(item)
+            self.Uni_label.setText(result[3])
 
     def displayInfo(self):
         self.show()

@@ -45,7 +45,7 @@
      <string notr="true">font-size:16px;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -217,7 +217,7 @@
        <rect>
         <x>10</x>
         <y>60</y>
-        <width>971</width>
+        <width>951</width>
         <height>231</height>
        </rect>
       </property>
@@ -238,8 +238,8 @@
      <widget class="QLineEdit" name="Line_classid">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>371</y>
+        <x>200</x>
+        <y>370</y>
         <width>111</width>
         <height>21</height>
        </rect>
@@ -251,8 +251,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>340</y>
+        <x>200</x>
+        <y>339</y>
         <width>141</width>
         <height>21</height>
        </rect>
@@ -264,8 +264,8 @@
      <widget class="QPushButton" name="GodkendAnmodning">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>370</y>
+        <x>490</x>
+        <y>369</y>
         <width>171</width>
         <height>41</height>
        </rect>
@@ -277,14 +277,113 @@
      <widget class="QPushButton" name="AfvisAnmodning">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>430</y>
+        <x>490</x>
+        <y>429</y>
         <width>171</width>
         <height>41</height>
        </rect>
       </property>
       <property name="text">
        <string>Afvis anmodning</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Se kursusID</string>
+     </attribute>
+     <widget class="QListWidget" name="Uni_list">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>621</width>
+        <height>301</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Universitet">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Universitet nr</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Uni_label">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>50</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Vælg Universitet nr</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>90</y>
+        <width>341</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kursur</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="xml_knap">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>470</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udskriv kursus-skema til XML</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_kursusid">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>440</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Kursus nr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Uni_knap">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>50</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Søg</string>
       </property>
      </widget>
     </widget>

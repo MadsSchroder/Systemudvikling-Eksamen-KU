@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Klasser>
+  <Classes>
+    <classid>1</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-27</date>
+    <start>08:00:00</start>
+    <end>12:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+  <Classes>
+    <classid>2</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-30</date>
+    <start>08:00:00</start>
+    <end>13:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+  <Classes>
+    <classid>3</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-31</date>
+    <start>08:00:00</start>
+    <end>12:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+  <Classes>
+    <classid>4</classid>
+    <location>Universitetsparken 3</location>
+    <date>2022-05-27</date>
+    <start>13:00:00</start>
+    <end>14:00:00</end>
+    <classcourseID>1</classcourseID>
+    <coursename>Systemudvikling</coursename>
+  </Classes>
+</Klasser>
