@@ -15,12 +15,7 @@ class ClassesWriter:
         self.__root__.set("end_time", c.get_end())
         self.__root__.set("classcourseID", str(c.get_classcourseID()))
         self.__root__.set("coursename", c.get_coursename())
-        self.__root__.set("courseID", str(c.get_courseID()))
-        self.__root__.set("year", str(c.get_year()))
-        self.__root__.set("university", c.get_university())
-        self.__root__.set("uniID", str(c.get_uniID()))
-        self.__root__.set("program", c.get_program())
-        self.__root__.set("programID", str(c.get_programID()))
+
 
     def save(self) -> None:
         tree = ET.ElementTree(self.__root__)

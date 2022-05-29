@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QMainWindow, QListWidgetItem
 from PyQt6 import uic
 from Controller import dbconnection
 from Models.Classes import Classes
+from Models.Courses import Courses
 
 
 
@@ -37,6 +38,8 @@ class studentwindowUI(QMainWindow):
         results = cursor.fetchall()
         print(results)
         class_list = []
+        #courses_list = []
         for result in results:
-            class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12]))
+            class_list.append(Classes(result[0], result[1], result[2], result[3], result[4], result[5], result[6]))
+            #courses_list.append(Courses(result[7], result[8], result[9], result[10], result[11], result[12], result[6]))
         return class_list

@@ -32,15 +32,17 @@ def check_password(username, pw):
     mycursor = connection.cursor()
     if not check_username(username):
         return (False, "No user found", 0, 0)
-    query = ("SELECT id, password, usertypeid FROM s206007.users where username = %s")
+    #query = ("SELECT id, password, usertypeid FROM s206007.users where username = %s")
+    query = ("SELECT * FROM s206007.users where username = %s")
+
     mycursor.execute(query, (username,))
     results = mycursor.fetchall()
     print(results)
     users_list = []
     for result in results:
-        users_list.append(Users(result[0], result[1], result[2]))
-    if pw == result[1]:
-        return (True, "Success", result[2], result[0])
+        users_list.append(Users(result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8]))
+    if pw == result[2]:
+        return (True, "Success", result[8], result[0])
     else:
         return (False, "Wrong password", 0, 0)
 

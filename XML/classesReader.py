@@ -19,21 +19,10 @@ class ClassesReader:
         end = root.attrib['end_time']
         classcourseID = root.attrib['classcourseID']
         coursename = root.attrib['coursename']
-        courseID = root.attrib['courseID']
-        year = root.attrib['year']
-        university = root.attrib['university']
-        uniID = root.attrib['uniID']
-        program = root.attrib['program']
-        programID = root.attrib['programID']
-
-
-
-
-
 
         print("New lecture in", coursename)
 
-        self.__Classes__ = Classes(classid, location, date, start, end, classcourseID, coursename, courseID, year, university, uniID, program, programID)
+        self.__Classes__ = Classes(classid, location, date, start, end, classcourseID, coursename)
 
 
     def get_Classes(self) -> Classes:
