@@ -8,10 +8,6 @@ Uniskema -> Uniskema_Service: Fremsøger data
 Activate Uniskema_Service
 Uniskema_Service -> SQL_Database: Fremsøger data
 Activate SQL_Database
-end box
-box "Ekstern databaser opdaterer automatisk frie lokaler hver time"
-SQL_Database -> "KU/DTU_Database": Løbende søgning af lokale
-Activate "KU/DTU_Database"
 Return Løbende sending af lokale
 Return Sender data
 Return Viser lokale
