@@ -7,7 +7,6 @@ Login <|-- Main
 adminwindow <|-- AdminGUI
 studentwindow <|-- StudentGUI
 teacherwindow <|-- TeacherGUI
-DBConnection <.. Users
 DBConnection <.. Main
 DBConnection <.. StudentGUI
 DBConnection <.. TeacherGUI
@@ -30,24 +29,6 @@ class Users{
     CPR: int
     address: str
     usertypeid: int
-    --
-    get_id()
-    get_username()
-    set_username()
-    get_password()
-    set_password()
-    get_fname()
-    set_fname()
-    get_lname()
-    set_lname()
-    get_email()
-    set_email()
-    get_cpr()
-    set_cpr()
-    get_address()
-    set_address()
-    get_usertypeid()
-    set_usertypeid()
     }
 class Main{
     --
@@ -117,21 +98,6 @@ class Classes{
     end: str
     classcourseID: int
     coursename: str
-    --
-    get_classid()
-    set_classid()
-    get_location()
-    set_location()
-    get_date()
-    set_date()
-    get_start()
-    set_start()
-    get_end()
-    set_end()
-    get_classcourseID()
-    set_classcourseID()
-    get_coursename()
-    set_coursename()
     }
 class Courses{
     courseID: int
@@ -140,22 +106,6 @@ class Courses{
     uniID: int
     program: str
     programID: int
-    coursename: str):
-    --
-    get_courseID()
-    set_courseID()
-    get_year()
-    set_year()
-    get_university()
-    set_university()
-    get_uniID()
-    set_uniID()
-    get_program()
-    set_program()
-    get_programID()
-    set_programID()
-    get_coursename()
-    set_coursename()
     }
 class Changes{
     id: int
@@ -164,27 +114,15 @@ class Changes{
     start: str
     end: str
     courseid: int
-    --
-    get_id()
-    set_id()
-    get_location()
-    set_location()
-    get_date()
-    set_date()
-    get_start()
-    set_start()
-    get_end()
-    set_end()
-    get_courseid()
-    set_courseid()
+
     }
-class Login{
+class Login #lightgray{
     Username
     Password
     LoginButton
     GlemtLoginButton
     }
-class adminwindow{
+class adminwindow #lightgray{
     calendarWidget2: QCalendarWidget
     ScheduleList: QListWidget
     SendAnmodning: QPushButton
@@ -193,14 +131,14 @@ class adminwindow{
     addItem()
     clear()
     }
-class studentwindow{
+class studentwindow #lightgray{
     calendarWidget2: QCalendarWidget
     ScheduleList: QListWidget
     --
     addItem()
     clear()
     }
-class teacherwindow{
+class teacherwindow #lightgray{
     calendarWidget2: QCalendarWidget
     ScheduleList: QListWidget
     SendAnmodning: QPushButton
@@ -208,4 +146,5 @@ class teacherwindow{
     addItem()
     clear()
     }
+
 @enduml
