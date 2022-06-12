@@ -6,7 +6,6 @@ Lærer -> Uniskema: Login
 Activate Uniskema
 Uniskema -> Database: Tjek bruger
 Activate Database
-Actor SkemaSekretær
 alt successful login
     Uniskema <-- Database: Bruger godkendt
     Lærer <-- Uniskema: Menu
@@ -20,7 +19,6 @@ Uniskema <-- Database: Henter skema
 Lærer <-- Uniskema: Vis skema
 Lærer -> Uniskema: Foreslå skemaændring
 Uniskema -> Database: Anmodning lagres i databasen
-Database -> SkemaSekretær: Sender besked til SkemaSekretær
 return End connection
 return Logout
 @enduml

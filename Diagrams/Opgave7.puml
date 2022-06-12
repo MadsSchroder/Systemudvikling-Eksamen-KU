@@ -2,7 +2,7 @@
 left to right direction
 :Studerende:
 rectangle "UniSkema"  {
-Studerende --> (Ønsker at finde undervisningslokalet)
+Studerende --> (Ønsker at se skemaet for en specifik dag)
 }
 actor Studerende as Studerende2 
 rectangle "UniSkema" as "UniSkema5" {
@@ -26,10 +26,5 @@ actor SkemaSekretær as SkemaSekretær2
 rectangle "UniSkema" as "UniSkema3"  {
 SkemaSekretær2 --> (En lærer har henvendt sig omkring ændring af undervisning)
 (En lærer har henvendt sig omkring ændring af undervisning) --> (Redigere skemaet)
-}
-
-actor Studerende as Studerende3
-rectangle "UniSkema" as "UniSkema6"  {
-Studerende3 --> (Vil se om et undervisningslokale er ledigt)
 }
 @enduml

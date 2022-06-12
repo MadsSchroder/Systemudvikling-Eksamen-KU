@@ -58,14 +58,14 @@ class DBConnection{
     APPROVED_CLASS_CHANGE()
     DECLINE_CLASS_CHANGE()
     }
-class StudentGUI{
+class StudentGUI #lightgray{
     userid
     --
     calendarDateChanged()
     showScheduleOnGivenDate()
     getClasses()
     }
-class AdminGUI{
+class AdminGUI #lightgray{
     userid
     --
     calendarDateChanged()
@@ -81,7 +81,7 @@ class AdminGUI{
     Clear()
     displayInfo()
     }
-class TeacherGUI{
+class TeacherGUI #lightgray{
     userid
     --
     calendarDateChanged()

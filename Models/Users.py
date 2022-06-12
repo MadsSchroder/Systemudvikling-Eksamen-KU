@@ -13,6 +13,7 @@ class Users:
         self.__usertypeid = int(usertypeid)
         self.users_list.append(self)
 
+
     def get_id(self):
         return self.__id
 
