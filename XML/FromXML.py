@@ -1,8 +1,8 @@
-
 from logging import root
 import os
 from xml.etree import ElementTree
 from Models.Classes import Classes
+#This code is inspired from the course cookbook
 
 class ClassesReader:
     __file_name__ = '../XML/data/classes.xml'

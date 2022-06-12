@@ -1,6 +1,7 @@
 from lxml import objectify
 from Models.Classes import Classes
 from Models.Courses import Courses
+#This code is inspired from the course cookbook
 
 class Elements:
     @staticmethod

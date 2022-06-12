@@ -2,6 +2,7 @@ from lxml import etree, objectify
 from io import BytesIO
 from Models.Classes import Classes
 from XML.Elements import Elements
+#This code is inspired from the course cookbook
 
 
 class CoursesToXml:
